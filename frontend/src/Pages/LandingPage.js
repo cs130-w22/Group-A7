@@ -1,15 +1,17 @@
 import React, { Component } from "react";
+import { Row, Col, Container, Form, Button, FormGroup } from "react-bootstrap";
+import {  NavLink } from "react-router-dom";
 
-export default class HomePage extends Component {
+export default class LandingPage extends Component {
   render() {
     return (
-      <div className="Home">
-        <header className="Home-header">
-          <p>
-            This is the landing page
-          </p>
-        </header>
-      </div>
+      <Container>
+        <h1>Welcome to DineSmart</h1>
+        <p>DineSmart helps you discover and make reservations at local restaurants.</p>
+        <NavLink to="#/login/">
+          Login
+        </NavLink>
+      </Container>
     )
   }
 }

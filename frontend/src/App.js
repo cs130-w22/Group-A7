@@ -34,14 +34,8 @@ class App extends Component {
             <Routes>
               <Route exact path="/" element={<LandingPage/>} />
               <Route path="/home" element={<HomePage />} />
-              <Route
-                path="/login"
-                render={() => <LoginPage handler={this.handleClick} />}
-              />
-              <Route
-                path="/signup"
-                render={() => <SignupPage handler={this.handleClick} />}
-              />
+              <Route path="/login" element={<LoginPage />} />
+              <Route path="/signup" element={<SignupPage />} />
               <Route path="/browse" element={<BrowsePage/>} />
               <Route path="/reserve/" element={<ReservePage/>} />
             </Routes>
