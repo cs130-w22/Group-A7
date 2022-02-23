@@ -13,7 +13,7 @@ export default class SignupPage extends Component {
   render() {
     return (
       <Container>
-        <h1>Signup Page</h1>
+        <h1>Signup for a DineSmart account</h1>
         <Form>
           <Form.Group controlId="formBasicEmail">
             <Form.Label>Email address</Form.Label>
@@ -39,18 +39,6 @@ export default class SignupPage extends Component {
               Password must be between 6 to 20 characters which contain at least
               one numeric digit, one uppercase and one lowercase letter.
             </Form.Text>
-          </Form.Group>
-          <Form.Group controlId="ControlInput1">
-            <Form.Label>Role</Form.Label>
-            <Form.Control
-              as="select"
-              custom
-              onChange={(e) => this.setState({ role: e.target.value })}
-            >
-              <option value="">Choose...</option>
-              <option>mentor</option>
-              <option>mentee</option>
-            </Form.Control>
           </Form.Group>
           <Col>
             <Row>

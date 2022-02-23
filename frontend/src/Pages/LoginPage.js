@@ -12,7 +12,7 @@ export default class LoginPage extends Component {
   render() {
     return (
       <Container>
-        <h1>Login Page</h1>
+        <h1>Login to your DineSmart account</h1>
         <Form>
           <Form.Group controlId="formBasicEmail">
             <Form.Label>Email address</Form.Label>
@@ -45,11 +45,6 @@ export default class LoginPage extends Component {
               <Button href="#/signup/" variant="outline-secondary">
                 Don't have an account? Make one here.
               </Button>
-            </Row>
-            <Row>
-              <NavLink to="/" onClick={this.passWordReset}>
-                Request password reset
-              </NavLink>
             </Row>
           </Col>
         </Form>
