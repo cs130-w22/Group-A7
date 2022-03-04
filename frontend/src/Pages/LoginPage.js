@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import {  NavLink } from "react-router-dom";
+import {  Navigate } from "react-router-dom";
 import { Row, Col, Container, Form, Button } from "react-bootstrap";
 
 export default class LoginPage extends Component {
@@ -54,6 +54,8 @@ export default class LoginPage extends Component {
     //   .catch(function (error) {
     //     console.log(error);
     //   });
+    console.log('in login submit')
+    window.location.href='/home'
   };  
 
   render() {
@@ -69,9 +71,6 @@ export default class LoginPage extends Component {
               value={this.state.email}
               onChange={(e) => this.setState({ email: e.target.value })}
             />
-            <Form.Text className="text-muted">
-              We'll never share your email with anyone else.
-            </Form.Text>
           </Form.Group>
           <Form.Group controlId="formBasicPassword">
             <Form.Label>Password</Form.Label>
@@ -84,9 +83,7 @@ export default class LoginPage extends Component {
           </Form.Group>
           <Col>
             <Row>
-              <NavLink to="/home/" onClick={this.onSubmit}>
-                Submit
-              </NavLink>
+              <Button onClick={this.onSubmit}>Submit</Button>
             </Row>
             <Row>
               <Button href="#/signup/" variant="outline-secondary">

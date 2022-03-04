@@ -6,7 +6,6 @@ export default class SignupPage extends Component {
   state = {
     email: "",
     password: "",
-    role: "mentor",
     submitted: false,
     loggedIn: false,
   };
@@ -33,12 +32,13 @@ export default class SignupPage extends Component {
   }  
 
   isValid = () => {
-    var passw = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,20}$/;
-    if (this.state.password.match(passw)) {
-      return true;
-    }
-    alert("Password not good enough");
-    return false;
+    return true;
+    // var passw = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,20}$/;
+    // if (this.state.password.match(passw)) {
+    //   return true;
+    // }
+    // alert("Password not good enough");
+    // return false;
   };
 
   onSubmit = () => {
@@ -48,7 +48,6 @@ export default class SignupPage extends Component {
     var data = JSON.stringify({
       email: this.state.email,
       password: this.state.password,
-      role: this.state.role,
     });
     // TODO: uncomment once API is live
     // var config = {
@@ -71,7 +70,7 @@ export default class SignupPage extends Component {
     //   .catch(function (error) {
     //     console.log(error);
     //   });
-    return <Navigate to="/home" />;
+    window.location.href='/home'
   };
   render() {
     return (
