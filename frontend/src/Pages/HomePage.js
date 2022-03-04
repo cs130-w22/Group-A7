@@ -10,10 +10,10 @@ export default class HomePage extends Component {
         <p>Here are your reservations: </p>
         <Col>
           <Row>
-            <NavLink to="#/browse/">Browse local restaurants</NavLink>
+            <NavLink to="/browse/">Browse local restaurants</NavLink>
           </Row>
           <Row>
-            <NavLink to="#/browse/">Know what you want? Make a booking</NavLink>
+            <NavLink to="/reserve/">Know what you want? Make a booking</NavLink>
           </Row>
         </Col>
       </Container>
