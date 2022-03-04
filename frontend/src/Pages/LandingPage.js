@@ -8,7 +8,7 @@ export default class LandingPage extends Component {
       <Container>
         <h1>Welcome to DineSmart</h1>
         <p>DineSmart helps you discover and make reservations at local restaurants.</p>
-        <NavLink to="#/login/">
+        <NavLink to="/login/">
           Login
         </NavLink>
       </Container>
