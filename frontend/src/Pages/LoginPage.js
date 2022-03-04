@@ -9,6 +9,53 @@ export default class LoginPage extends Component {
     loggedIn: false,
   };
 
+  componentDidMount() {
+    // TODO: uncomment once API is live
+    // axios({
+    //   method: "post",
+    //   url: "getCurrentUser/",
+    //   headers: {
+    //     "Content-Type": "text/plain",
+    //     "X-CSRFToken": Cookies.get("XSRF-TOKEN"),
+    //   },
+    //   withCredentials: true,
+    // })
+    //   .then((response) => {
+    //     if (response.data !== "") {
+    //       this.setState({ loggedIn: true });
+    //     }
+    //   })
+    //   .catch(function (error) {
+    //     console.log(error);
+    //   });
+  }
+
+  onSubmit = () => {
+    var data = JSON.stringify({
+      email: this.state.email,
+      password: this.state.password,
+    });
+    // TODO: uncomment once API is live
+    // axios({
+    //   method: "post",
+    //   url: "login/",
+    //   headers: {
+    //     "Content-Type": "text/plain",
+    //     "X-CSRFToken": Cookies.get("XSRF-TOKEN"),
+    //   },
+    //   data: data,
+    //   withCredentials: true,
+    // })
+    //   .then((response) => {
+    //     console.log(response.status);
+    //     console.log(JSON.stringify(response.data));
+    //     this.props.handler();
+    //   })
+    //   .catch(function (error) {
+    //     console.log(error);
+    //   });
+  };  
+
   render() {
     return (
       <Container>
