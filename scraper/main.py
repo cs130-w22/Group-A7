@@ -58,9 +58,8 @@ asession = AsyncHTMLSession()
 
 async def get_results():
     r = await asession.get(URL)
-    await r.html.arender()
+    await r.html.arender(wait = 3, sleep = 3)
     return r
 
 r = asession.run(get_results)
-lang_bar = r[0].html.find('#ScrollTo')
-print(lang_bar)
+print(r[0].html.text)
