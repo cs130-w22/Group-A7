@@ -15,7 +15,7 @@
 # from bs4 import BeautifulSoup
 
 city = "ny"
-date = "2022-03-03"
+date = "2022-03-04"
 seats = "2"
 query = "mexican"
 URL = f"https://resy.com/cities/{city}?date={date}&seats={seats}&query={query}"
@@ -62,4 +62,7 @@ async def get_results():
     return r
 
 r = asession.run(get_results)
-print(r[0].html.text)
+unfiltered = r[0].html.text
+latter = unfiltered.split("Guests")
+former = unfiltered[-1].split("‹")
+print(former[0])
