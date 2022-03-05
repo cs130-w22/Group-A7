@@ -1,5 +1,5 @@
-# # import requests
-# # from bs4 import BeautifulSoup
+# import requests
+# from bs4 import BeautifulSoup
 # from requests_html import HTMLSession
 # # from selenium import webdriver
 # # import selenium
@@ -12,7 +12,7 @@
 # # from selenium.common.exceptions import StaleElementReferenceException
 # # from selenium.common.exceptions import WebDriverException
 # # from datetime import datetime as dt
-# from bs4 import BeautifulSoup
+import re
 
 city = "ny"
 date = "2022-03-03"
@@ -56,10 +56,21 @@ from requests_html import AsyncHTMLSession
 
 asession = AsyncHTMLSession()
 
+# scrape Resy for restaurant results
 async def get_results():
     r = await asession.get(URL)
     await r.html.arender(wait = 3, sleep = 3)
     return r
-
 r = asession.run(get_results)
-print(r[0].html.text)
+
+#
+feed = r[0].html.text
+resy_lines = feed.splitlines()
+c = 0
+for l in resy_lines:
+    revRegex = re.compile(r'\d.\d\(\d+.*\d*k*\)')
+    res = revRegex.search(l)
+    if res is not None:
+        print(res.group())
+        c += 1
+print(c)
