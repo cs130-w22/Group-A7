@@ -80,10 +80,20 @@ former = latter[-1].split("‹")[0]
 names = extract_resy_names(former)
 
 delimeters = '|'.join(names)
-for i in re.split(delimeters, former):
-    print(i)
+m_dict = {}
 
-    print('------------------------------')
+for r in names:
+    for i in re.split(delimeters, former):
+        if 'PM' in i or 'AM' in i:
+            for line in i.split('\n'):
+                if 'PM' in line or 'AM' in line:
+                    if r in m_dict:
+                        m_dict[r].append(line)
+                    else:
+                        m_dict[r] = [line]
+    m_dict[r] = list(set(m_dict[r]))
+
+print(m_dict)
 
 
 
