@@ -64,8 +64,7 @@ async def get_results():
 
 # parse restaurant results to get restaurant names
 def extract_resy_names(results):
-    feed = results[0].html.text
-    resy_lines = feed.splitlines()
+    resy_lines = results.splitlines()
     resy_names = []
     for i in range(len(resy_lines)):
         revRegex = re.compile(r'\$')
@@ -76,6 +75,18 @@ def extract_resy_names(results):
 
 # scrape resy and get 20 restaurant names
 r = asession.run(get_results)
-print(extract_resy_names(r))
+latter = r[0].html.text.split("Guests")
+former = latter[-1].split("‹")[0]
+names = extract_resy_names(former)
+
+delimeters = '|'.join(names)
+for i in re.split(delimeters, former):
+    print(i)
+
+    print('------------------------------')
+
+
+
+
 
 
