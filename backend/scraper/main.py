@@ -62,19 +62,20 @@ async def get_results():
     await r.html.arender(wait = 3, sleep = 3)
     return r
 
-
-# act
-r = asession.run(get_results)
-
 # parse restaurant results to get restaurant names
-feed = r[0].html.text
-resy_lines = feed.splitlines()
-resy_names = []
-for i in range(len(resy_lines)):
-    revRegex = re.compile(r'\$')
-    res = revRegex.search(resy_lines[i])
-    if res is not None:
-        resy_names.append(resy_lines[i-5])
+def extract_resy_names(results):
+    feed = results[0].html.text
+    resy_lines = feed.splitlines()
+    resy_names = []
+    for i in range(len(resy_lines)):
+        revRegex = re.compile(r'\$')
+        res = revRegex.search(resy_lines[i])
+        if res is not None:
+            resy_names.append(resy_lines[i - 5])
+    return resy_names
 
-# print(resy_names)
+# scrape resy and get 20 restaurant names
+r = asession.run(get_results)
+print(extract_resy_names(r))
+
 
