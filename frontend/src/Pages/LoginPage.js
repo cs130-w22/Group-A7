@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import {  NavLink } from "react-router-dom";
+import {  Navigate } from "react-router-dom";
 import { Row, Col, Container, Form, Button } from "react-bootstrap";
 
 export default class LoginPage extends Component {
@@ -9,10 +9,59 @@ export default class LoginPage extends Component {
     loggedIn: false,
   };
 
+  componentDidMount() {
+    // TODO: uncomment once API is live
+    // axios({
+    //   method: "post",
+    //   url: "getCurrentUser/",
+    //   headers: {
+    //     "Content-Type": "text/plain",
+    //     "X-CSRFToken": Cookies.get("XSRF-TOKEN"),
+    //   },
+    //   withCredentials: true,
+    // })
+    //   .then((response) => {
+    //     if (response.data !== "") {
+    //       this.setState({ loggedIn: true });
+    //     }
+    //   })
+    //   .catch(function (error) {
+    //     console.log(error);
+    //   });
+  }
+
+  onSubmit = () => {
+    var data = JSON.stringify({
+      email: this.state.email,
+      password: this.state.password,
+    });
+    // TODO: uncomment once API is live
+    // axios({
+    //   method: "post",
+    //   url: "login/",
+    //   headers: {
+    //     "Content-Type": "text/plain",
+    //     "X-CSRFToken": Cookies.get("XSRF-TOKEN"),
+    //   },
+    //   data: data,
+    //   withCredentials: true,
+    // })
+    //   .then((response) => {
+    //     console.log(response.status);
+    //     console.log(JSON.stringify(response.data));
+    //     this.props.handler();
+    //   })
+    //   .catch(function (error) {
+    //     console.log(error);
+    //   });
+    console.log('in login submit')
+    window.location.href='/home'
+  };  
+
   render() {
     return (
       <Container>
-        <h1>Login Page</h1>
+        <h1>Login to your DineSmart account</h1>
         <Form>
           <Form.Group controlId="formBasicEmail">
             <Form.Label>Email address</Form.Label>
@@ -22,9 +71,6 @@ export default class LoginPage extends Component {
               value={this.state.email}
               onChange={(e) => this.setState({ email: e.target.value })}
             />
-            <Form.Text className="text-muted">
-              We'll never share your email with anyone else.
-            </Form.Text>
           </Form.Group>
           <Form.Group controlId="formBasicPassword">
             <Form.Label>Password</Form.Label>
@@ -37,19 +83,12 @@ export default class LoginPage extends Component {
           </Form.Group>
           <Col>
             <Row>
-              <NavLink to="/home/" onClick={this.onSubmit}>
-                Submit
-              </NavLink>
+              <Button onClick={this.onSubmit}>Submit</Button>
             </Row>
             <Row>
               <Button href="#/signup/" variant="outline-secondary">
                 Don't have an account? Make one here.
               </Button>
-            </Row>
-            <Row>
-              <NavLink to="/" onClick={this.passWordReset}>
-                Request password reset
-              </NavLink>
             </Row>
           </Col>
         </Form>
