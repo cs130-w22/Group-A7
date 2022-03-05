@@ -95,7 +95,7 @@ export default class BrowsePage extends Component {
 
         <p>Select from the following restaurants:</p>
         <NavLink
-          to={`#/reserve/:${this.state.selected_restaurant_id}/:${this.state.selected_date}/:${this.state.selected_time}/:${this.state.selected_size}`}
+          to={`/reserve/${this.state.selected_restaurant_id}/${this.state.selected_date}/${this.state.selected_time}/${this.state.selected_size}`}
           onClick={this.makeBooking}
         >
           Make a booking
