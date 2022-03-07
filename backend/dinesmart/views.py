@@ -8,7 +8,7 @@ import time
 import json
 from django.views.decorators.csrf import csrf_exempt
 
-from dinesmart.models import Users, UserAuthTokens, PasswordReset
+from dinesmart.models import Users, UserAuthTokens
 
 # Create your views here.
 
@@ -36,9 +36,11 @@ def create_user(request):
             return HttpResponse("email already in use", status=406)
     except Exception as e:
         return HttpResponse(e, status=401)
-    
+
+    hashed_password = hash_password(password)
+
     # save user in database
-    user = Users(email=email, password=password)
+    user = Users(email=email, password=hashed_password)
     try:
         user.save()
         #create authentication token for session
@@ -46,18 +48,18 @@ def create_user(request):
 
         request.session['email'] = email
         request.session['token'] = str(token)
-        request.session.set_expiry(1800) #session expires in 1800 seconds = 0.5 hour
+        request.session.set_expiry(3600) #session expires in 3600 seconds = 1 hour
         return HttpResponse("user succesfully created", status=201)
     except:
         return HttpResponse("error saving user", status=401)
 
 @csrf_exempt
 def login(request):
-    # only accept post requests
+    #only accept post requests
     if request.method != "POST":
         return HttpResponse("only POST calls accepted", status=404)
 
-    # input validation
+    #input validation
     try:
         payload = json.loads(request.body)
         email = payload['email']
@@ -65,13 +67,16 @@ def login(request):
     except:
         return HttpResponse("missing/blank email or password", status=401)
 
-    # make sure user exists
+    #hash password
+    hashed_password = hash_password(password)
+
+    #make sure user exists
     try:
-        user_count = Users.objects.filter(email=email).count()
+        user_count = Users.objects.filter(email=email, password=hashed_password).count()
         if user_count != 1:
             return HttpResponse("unable to find user", status=404)
-    except Exception as e:
-        return HttpResponse(e, status=404)
+    except:
+        return HttpResponse("unable to find user", status=404)
 
     #create authentication token for session
     token = createAuthToken(email)
@@ -81,6 +86,15 @@ def login(request):
     request.session.set_expiry(1800) #session expires in 1800 seconds = 0.5 hour
 
     return HttpResponse("login successful", status=200)
+
+def hash_password(password):
+    key = 'b\'\\xd3\\xf4\\xb7X\\xbd\\x07"\\xf4a\\\'\\xf5\\x16\\xd7a\\xa4\\xbd\\xf0\\xe7\\x10\\xdeR\\x0el\\xc2fW\\x80\\xfd\\xd39\\x953\''
+    passwordbytes = bytes(password, 'utf-8')
+    keybytes = bytes(key, 'utf-8')
+
+    h = hmac.new( keybytes, passwordbytes, hashlib.sha256 )
+    hashed_password = str(h.hexdigest())
+    return hashed_password
 
 #this function is just used as a test to make sure the session authentication is working
 @csrf_exempt
@@ -109,10 +123,8 @@ def checkAuthToken(request):
         h = hmac.new( keybytes, tokenbytes, hashlib.sha256 )
         hashedToken = h.hexdigest()
 
-        #compare_digest used to secure against timing attacks
-        if hmac.compare_digest(token, str(hashedToken)):
-            return True
-        return False
+        # compare_digest used to secure against timing attacks
+        return True if hmac.compare_digest(token, str(hashedToken)) else False
     except Exception:
         return False
 
