@@ -12,7 +12,6 @@ export default class SignupPage extends Component {
   };
 
   componentDidMount() {
-    // TODO: uncomment once API is live
     axios({
       method: "post",
       url: "http://localhost:8000/getCurrentUser/",
@@ -50,7 +49,6 @@ export default class SignupPage extends Component {
       email: this.state.email,
       password: this.state.password,
     });
-    // TODO: uncomment once API is live
     var config = {
       method: "post",
       url: "http://localhost:8000/createUser/",
