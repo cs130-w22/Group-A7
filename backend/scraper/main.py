@@ -3,7 +3,7 @@ from bs4 import BeautifulSoup
 
 
 def get_restaurant_info(city_hyphened, city_spaced, date, size):
-    url = f"https://www.exploretock.com/city/{c1}/search?city={c2}&date={date}&size={size}"
+    url = f"https://www.exploretock.com/city/{city_hyphened}/search?city={city_spaced}&date={date}&size={size}"
     r = requests.get(url)
     soup = BeautifulSoup(r.content, 'html.parser')
 
