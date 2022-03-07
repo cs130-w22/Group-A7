@@ -76,13 +76,13 @@ export default class ReviewPage extends Component {
             <Form.Label>Rating</Form.Label>
             <Form.Control
               as="select"
-              custom
+              custom="true"
               onChange={(e) => this.setState({ rating: e.target.value })}
             >
               <option value="">Choose...</option>
               {["1", "2", "3", "4", "5"].map((o) => {
                 const stars = o;
-                return <option>{stars}</option>;
+                return <option key={stars}>{stars}</option>;
               })}
             </Form.Control>
           </Form.Group>

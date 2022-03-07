@@ -8,8 +8,11 @@ import time
 import json
 import random
 from django.views.decorators.csrf import csrf_exempt
+from django.core import serializers
+from django.forms.models import model_to_dict
 
-from dinesmart.models import Users, UserAuthTokens
+
+from dinesmart.models import Users, UserAuthTokens, PasswordReset, Reviews
 
 # Create your views here.
 
@@ -296,3 +299,53 @@ def sendResetEmail(email, token):
 # returns a randomly generated token of length N
 def randStr(chars = string.ascii_uppercase + string.ascii_lowercase + string.digits, N=10):
 	return ''.join(random.choice(chars) for _ in range(N))
+
+@csrf_exempt
+def browse_restaurants(request):
+
+    if request.method != "POST":
+        return HttpResponse("only POST calls accepted", status=404)
+
+    #input validation
+    try:
+        payload = json.loads(request.body)
+        city = payload["city"]
+        date = payload["date"]
+        seats = payload["seats"]
+        cuisine = payload["cuisine"]
+    except:
+        return HttpResponse("missing/blank email or password", status=401)
+    
+    response = {
+        "rest1": {"times": ["5:45", "6:45", "7:45"], "price": "$$", "distance": "20", "cuisine": "Mexican"},
+        "rest2": {"times": ["5:50", "6:30"], "distance": "5", "cuisine": "Italian"},
+        "rest3": {"times": ["6:55", "7:15", "7:30", "7:45", "8:00"]},
+        "rest4": {"times": ["6:55", "7:15", "7:30", "7:45", "8:00"], "price": "$$$"},
+    }
+    return JsonResponse(response)
+
+@csrf_exempt
+def add_review(request):
+    try:
+        payload = json.loads(request.body)
+        user = request.session["email"]
+        restaurant = payload["restaurant"]
+        rating = payload["rating"]
+        content = payload["content"]
+        review = Reviews(user=user, restaurant=restaurant, rating=int(rating), content=content)
+        review.save()
+        return HttpResponse("successfully added review", status=200)
+    except:
+        return HttpResponse("missing/blank email or password", status=401)
+
+@csrf_exempt
+def my_reviews(request):
+    if request.method != "POST":
+        return HttpResponse("only POST calls accepted", status=404)
+
+    #input validation
+    try:
+        email = request.session["email"]
+        return JsonResponse(model_to_dict(Reviews.objects.get(user=email)))
+    except Exception as e:
+        return HttpResponse(e, status=401)

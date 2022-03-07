@@ -37,7 +37,7 @@ export default class BrowsePage extends Component {
             <Form.Label>Neighborhood</Form.Label>
             <Form.Control
               as="select"
-              custom
+              custom="true"
               onChange={(e) =>
                 this.setState({ selected_neighborhood: e.target.value })
               }
@@ -45,7 +45,7 @@ export default class BrowsePage extends Component {
               <option value="">Choose...</option>
               {this.state.possible_neighborhoods.map((o) => {
                 const neighborhood = o;
-                return <option>{neighborhood}</option>;
+                return <option key={neighborhood}>{neighborhood}</option>;
               })}
             </Form.Control>
           </Form.Group>
@@ -53,13 +53,13 @@ export default class BrowsePage extends Component {
             <Form.Label>Date</Form.Label>
             <Form.Control
               as="select"
-              custom
+              custom="true"
               onChange={(e) => this.setState({ selected_date: e.target.value })}
             >
               <option value="">Choose...</option>
               {this.state.possible_dates.map((o) => {
                 const date = o;
-                return <option>{date}</option>;
+                return <option key={date}>{date}</option>;
               })}
             </Form.Control>
           </Form.Group>
@@ -67,13 +67,13 @@ export default class BrowsePage extends Component {
             <Form.Label>Time</Form.Label>
             <Form.Control
               as="select"
-              custom
+              custom="true"
               onChange={(e) => this.setState({ selected_time: e.target.value })}
             >
               <option value="">Choose...</option>
               {this.state.possible_times.map((o) => {
                 const time = o;
-                return <option>{time}</option>;
+                return <option key={time}>{time}</option>;
               })}
             </Form.Control>
           </Form.Group>
@@ -81,13 +81,13 @@ export default class BrowsePage extends Component {
             <Form.Label>Size</Form.Label>
             <Form.Control
               as="select"
-              custom
+              custom="true"
               onChange={(e) => this.setState({ selected_size: e.target.value })}
             >
               <option value="">Choose...</option>
               {this.state.possible_sizes.map((o) => {
                 const size = o;
-                return <option>{size}</option>;
+                return <option key={size}>{size}</option>;
               })}
             </Form.Control>
           </Form.Group>
