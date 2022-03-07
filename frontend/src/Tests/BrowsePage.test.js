@@ -14,7 +14,7 @@ test("browsepage renders", () => {
   expect(title).toBeInTheDocument();
 });
 
-test("homepage shows neighborhood option", () => {
+test("browsepage shows neighborhood option", () => {
   render(
     <BrowserRouter>
       <Routes>
@@ -26,7 +26,7 @@ test("homepage shows neighborhood option", () => {
   expect(neighborhood).toBeInTheDocument();
 });
 
-test("homepage shows date option", () => {
+test("browsepage shows date option", () => {
   render(
     <BrowserRouter>
       <Routes>
@@ -38,7 +38,7 @@ test("homepage shows date option", () => {
   expect(date).toBeInTheDocument();
 });
 
-test("homepage shows time option", () => {
+test("browsepage shows time option", () => {
   render(
     <BrowserRouter>
       <Routes>
