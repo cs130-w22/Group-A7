@@ -20,7 +20,9 @@ jobs:
          pytest backend/dinesmart/tests.py
          
   deploy:
-#    - uses: actions/checkout@v2
+    #runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
     - name: Django aws eb deployment
       uses: joel-hanson/django-aws-eb-deploy@V1.1
       with:
