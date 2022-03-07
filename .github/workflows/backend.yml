@@ -32,7 +32,7 @@ jobs:
             aws_access_key: ${{ secrets.aws_access_key_id }}
             aws_secret_key: ${{ secrets.aws_secret_access_key }}
             application_name: Dinesmart
-            environment_name: Dinesmartenv
+            environment_name: Dinesmart-env
             region: us-west-1
             version_label: 1
             deployment_package: deploy.zip
