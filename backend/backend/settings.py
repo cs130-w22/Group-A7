@@ -25,8 +25,15 @@ SECRET_KEY = '+35=mfw+(s=h8fjrqfdnu3_%wmpttp%-#+mq-t$#5!zagkl30n'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost', '127.0.0.1']
 
+CORS_ORIGIN_ALLOW_ALL = False
+
+CORS_ORIGIN_WHITELIST = [
+    'http://localhost:3000', 'http://localhost:8000', 'http://127.0.0.1:8000',
+]
+
+CORS_ALLOW_CREDENTIALS = True
 
 # Application definition
 
@@ -37,6 +44,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'dinesmart',
+    'corsheaders',
 ]
 
 MIDDLEWARE = [

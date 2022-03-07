@@ -15,7 +15,14 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from dinesmart import views
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('createUser/', views.create_user),
+    path('login/', views.login),
+    path('logout/', views.logout),
+    path('authTest/', views.auth_test),
+    path('getCurrentUser/', views.get_current_user),
 ]
