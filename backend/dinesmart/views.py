@@ -9,8 +9,10 @@ import json
 import random
 from django.views.decorators.csrf import csrf_exempt
 from django.core import serializers
+from django.forms.models import model_to_dict
 
-from dinesmart.models import Users, UserAuthTokens, PasswordReset, Reviews, UserProfile
+
+from dinesmart.models import Users, UserAuthTokens, PasswordReset, Reviews
 
 # Create your views here.
 
@@ -326,12 +328,13 @@ def browse_restaurants(request):
 def add_review(request):
     try:
         payload = json.loads(request.body)
-        user = payload["user"]
+        user = request.session["email"]
         restaurant = payload["restaurant"]
         rating = payload["rating"]
         content = payload["content"]
         review = Reviews(user=user, restaurant=restaurant, rating=int(rating), content=content)
         review.save()
+        return HttpResponse("successfully added review", status=200)
     except:
         return HttpResponse("missing/blank email or password", status=401)
 
@@ -342,8 +345,7 @@ def my_reviews(request):
 
     #input validation
     try:
-        payload = json.loads(request.body)
-        user = payload["city"]
-        return serializers.serialize("json", Reviews.objects.filter(user=user))
+        email = request.session["email"]
+        return JsonResponse(model_to_dict(Reviews.objects.get(user=email)))
     except Exception as e:
         return HttpResponse(e, status=401)
