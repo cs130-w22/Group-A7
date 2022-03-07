@@ -168,4 +168,3 @@ def get_current_user(request):
         return HttpResponse(email, status=200)
     except:
         return HttpResponse("unable to get current user", status=404)
-    
