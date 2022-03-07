@@ -49,7 +49,18 @@ def cleanser(places, text):
                         else:
                             m_dict[r] = [line]
         m_dict[r] = list(set(m_dict[r]))
+
     return m_dict
+
+def get_post_urls(c, names, d):
+    ret = []
+    #attemptformat = f"https://resy.com/cities/{c}/bar-tulix?date={d}"
+    for r in names:
+        lst = re.split('\s+|-',r)
+        lst2 = [x.lower() for x in lst]
+        nme = "-".join(lst2)
+        ret.append(f"https://resy.com/cities/{c}/{nme}?date={d}")
+    return ret
 
 def get_scraper_info(c,d,s,q):
     # scrape resy and get 20 restaurant names
@@ -64,13 +75,15 @@ def get_scraper_info(c,d,s,q):
     query = q
     URL = f"https://resy.com/cities/{city}?date={date}&seats={seats}&query={query}"
     r = asession.run(get_results)
+    #print(r[0].html.text)
+    
     latter = r[0].html.text.split("Guests")
     former = latter[-1].split("‹")[0]
     names = extract_resy_names(former)
+    urls = get_post_urls(c, names, d)
+    return (cleanser(names, former), urls)
 
-    return cleanser(names, former)
-
-print(get_scraper_info("ny", "2022-03-07", "2", "mexican"))
+get_scraper_info("ny", "2022-03-07", "2", "mexican")
 
 
 
