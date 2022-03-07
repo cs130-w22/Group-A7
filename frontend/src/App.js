@@ -9,6 +9,7 @@ import LoginPage from "./Pages/LoginPage";
 import SignupPage from "./Pages/SignupPage";
 import BrowsePage from "./Pages/BrowsePage";
 import ReservePage from "./Pages/ReservePage";
+import ReviewPage from "./Pages/ReviewPage";
 
 class App extends Component {
   render() {
@@ -21,6 +22,7 @@ class App extends Component {
             <Nav.Link href="#/login">Login</Nav.Link>
             <Nav.Link href="#/browse">Browse</Nav.Link>
             <Nav.Link href="#/reserve">Reserve</Nav.Link>
+            <Nav.Link href="#/review">Review</Nav.Link>
           </Nav>
           {/* <Navbar.Collapse className="justify-content-end">
             <TryUsername user={this.state.user}></TryUsername>
@@ -38,6 +40,7 @@ class App extends Component {
               <Route path="/signup" element={<SignupPage />} />
               <Route path="/browse" element={<BrowsePage/>} />
               <Route path="/reserve/" element={<ReservePage/>} />
+              <Route path="/review/" element={<ReviewPage/>} />
             </Routes>
           </div>
         </HashRouter>
