@@ -25,3 +25,4 @@ urlpatterns = [
     path('logout/', views.logout),
     path('authTest/', views.auth_test),
     path('getCurrentUser/', views.get_current_user),
+]
