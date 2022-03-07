@@ -2,7 +2,9 @@ import requests
 from bs4 import BeautifulSoup
 
 
-def get_restaurant_info(city_hyphened, city_spaced, date, size):
+def get_restaurant_info(city, date, size):
+    city_spaced = city.title()
+    city_hyphened = city.lower().replace(" ", "-")
     url = f"https://www.exploretock.com/city/{city_hyphened}/search?city={city_spaced}&date={date}&size={size}"
     r = requests.get(url)
     soup = BeautifulSoup(r.content, 'html.parser')
@@ -32,8 +34,7 @@ def get_restaurant_info(city_hyphened, city_spaced, date, size):
     return restaurants
 
 # test
-#c1 = "los-angeles"
-#c2 = "Los Angeles"
+#city = "Los Angeles"
 #date = "2022-03-07"
 #size = "2"
-#print(get_restaurant_info(c1, c2, date, size))
+#print(get_restaurant_info(city, date, size))
