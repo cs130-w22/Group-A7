@@ -17,11 +17,7 @@ jobs:
          pip install pytest-cov
          python -m pip install django
          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
-      - name: Build coverage file
-        run: |
-          pytest --cache-clear --cov=app backend/dinesmart/tests.py > pytest-coverage.txt
-      - name: Comment coverage
-        uses: coroo/pytest-coverage-commentator@v1.0.2
+        pytest backend/dinesmart/tests.py
          
   deploy:
     runs-on: ubuntu-latest
