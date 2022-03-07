@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import {  Navigate } from "react-router-dom";
 import { Row, Col, Container, Form, Button } from "react-bootstrap";
-
+import axios from "axios";
+import Cookies from "js-cookie";
 export default class LoginPage extends Component {
   state = {
     email: "",
@@ -10,24 +11,23 @@ export default class LoginPage extends Component {
   };
 
   componentDidMount() {
-    // TODO: uncomment once API is live
-    // axios({
-    //   method: "post",
-    //   url: "getCurrentUser/",
-    //   headers: {
-    //     "Content-Type": "text/plain",
-    //     "X-CSRFToken": Cookies.get("XSRF-TOKEN"),
-    //   },
-    //   withCredentials: true,
-    // })
-    //   .then((response) => {
-    //     if (response.data !== "") {
-    //       this.setState({ loggedIn: true });
-    //     }
-    //   })
-    //   .catch(function (error) {
-    //     console.log(error);
-    //   });
+    axios({
+      method: "post",
+      url: "http://localhost:8000/getCurrentUser/",
+      headers: {
+        "Content-Type": "text/plain",
+        "X-CSRFToken": Cookies.get("XSRF-TOKEN"),
+      },
+      withCredentials: 'false',
+    })
+      .then((response) => {
+        if (response.data !== "") {
+          this.setState({ loggedIn: true });
+        }
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
   }
 
   onSubmit = () => {
@@ -35,27 +35,24 @@ export default class LoginPage extends Component {
       email: this.state.email,
       password: this.state.password,
     });
-    // TODO: uncomment once API is live
-    // axios({
-    //   method: "post",
-    //   url: "login/",
-    //   headers: {
-    //     "Content-Type": "text/plain",
-    //     "X-CSRFToken": Cookies.get("XSRF-TOKEN"),
-    //   },
-    //   data: data,
-    //   withCredentials: true,
-    // })
-    //   .then((response) => {
-    //     console.log(response.status);
-    //     console.log(JSON.stringify(response.data));
-    //     this.props.handler();
-    //   })
-    //   .catch(function (error) {
-    //     console.log(error);
-    //   });
-    console.log('in login submit')
-    window.location.href='/home'
+    axios({
+      method: "post",
+      url: "http://localhost:8000/login/",
+      headers: {
+        "Content-Type": "text/plain",
+        "X-CSRFToken": Cookies.get("XSRF-TOKEN"),
+      },
+      data: data,
+      withCredentials: 'false',
+    })
+      .then((response) => {
+        console.log(response.status);
+        console.log(JSON.stringify(response.data));
+        window.location.href='/home'
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
   };  
 
   render() {

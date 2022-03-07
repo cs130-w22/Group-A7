@@ -2,6 +2,8 @@ import "./App.css";
 import { HashRouter, Route, Routes } from "react-router-dom";
 import { Nav, Navbar, Container } from "react-bootstrap";
 import React, { Component } from "react";
+import axios from "axios";
+import Cookies from "js-cookie";
 
 import HomePage from "./Pages/HomePage";
 import LandingPage from "./Pages/LandingPage";
@@ -9,9 +11,61 @@ import LoginPage from "./Pages/LoginPage";
 import SignupPage from "./Pages/SignupPage";
 import BrowsePage from "./Pages/BrowsePage";
 import ReservePage from "./Pages/ReservePage";
+import ReviewPage from "./Pages/ReviewPage";
 
 class App extends Component {
+  state = {
+    user: "",
+    dummy: 0,
+  };
+
+  componentDidMount() {
+    axios({
+      method: "post",
+      url: "http://localhost:8000/getCurrentUser/",
+      headers: {
+        "Content-Type": "text/plain",
+        "X-CSRFToken": Cookies.get("XSRF-TOKEN"),
+      },
+      withCredentials: 'false',
+    })
+      .then((response) => {
+        this.setState({ user: response.data });
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  }
+
+  onSubmit = () => {
+    axios({
+      method: "post",
+      url: "http://localhost:8000/logout/",
+      headers: {
+        "Content-Type": "text/plain",
+        "X-CSRFToken": Cookies.get("XSRF-TOKEN"),
+      },
+      withCredentials: true,
+    })
+      .then((response) => {
+        console.log(response.status);
+        this.setState({ user: "" });
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  };
+
   render() {
+    function TryUsername(props) {
+      const user = props.user;
+
+      if (user !== "") {
+        return <Navbar.Text>Signed in as: {user} .</Navbar.Text>;
+      } else {
+        return <div></div>;
+      }
+    }
     return (
       <Container>
         <Navbar bg="primary" variant="dark">
@@ -21,13 +75,14 @@ class App extends Component {
             <Nav.Link href="#/login">Login</Nav.Link>
             <Nav.Link href="#/browse">Browse</Nav.Link>
             <Nav.Link href="#/reserve">Reserve</Nav.Link>
+            <Nav.Link href="#/review">Review</Nav.Link>
           </Nav>
-          {/* <Navbar.Collapse className="justify-content-end">
+          <Navbar.Collapse className="justify-content-end">
             <TryUsername user={this.state.user}></TryUsername>
             <Navbar.Text onClick={this.onSubmit}>
               <a href="#login">Logout</a>
             </Navbar.Text>
-          </Navbar.Collapse> */}
+          </Navbar.Collapse>
         </Navbar>
         <HashRouter>
           <div className="App">
@@ -38,6 +93,7 @@ class App extends Component {
               <Route path="/signup" element={<SignupPage />} />
               <Route path="/browse" element={<BrowsePage/>} />
               <Route path="/reserve/" element={<ReservePage/>} />
+              <Route path="/review/" element={<ReviewPage/>} />
             </Routes>
           </div>
         </HashRouter>
