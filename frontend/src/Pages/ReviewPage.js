@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import { Row, Col, Container, Form, Button, FormGroup } from "react-bootstrap";
 import { NavLink } from "react-router-dom";
-
+import axios from "axios";
+import Cookies from "js-cookie";
 export default class ReviewPage extends Component {
   state = {
     restaurantName: "",
