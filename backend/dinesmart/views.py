@@ -15,7 +15,7 @@ from datetime import date
 from scraper.main import get_restaurant_info
 
 
-from dinesmart.models import User, UserAuthTokens, PasswordReset, Review, UserProfile, to_dict
+from dinesmart.models import User, UserAuthTokens, PasswordReset, Review, Restaurant, UserProfile, to_dict
 
 # Create your views here.
 
@@ -325,17 +325,17 @@ def browse_restaurants(request):
 
 @csrf_exempt
 def add_review(request):
-    try:
-        payload = json.loads(request.body)
-        user = User.objects.get(email=request.session["email"])
-        restaurant = payload["restaurant"]
-        rating = payload["rating"]
-        content = payload["content"]
-        review = Review(user=user, restaurant=restaurant, rating=int(rating), content=content)
-        review.save()
-        return HttpResponse("successfully added review", status=200)
-    except Exception as e:
-        return HttpResponse(e, status=401)
+    # try:
+    payload = json.loads(request.body)
+    user = User.objects.get(email=request.session['email'])
+    restaurant, created = Restaurant.objects.get_or_create(name=payload["restaurant"])
+    rating = payload["rating"]
+    content = payload["content"]
+    review = Review(user=user, restaurant=restaurant, rating=int(rating), content=content)
+    review.save()
+    return HttpResponse("successfully added review", status=200)
+    # except Exception as e:
+    #     return HttpResponse(e.stracktrace(), status=401)
 
 @csrf_exempt
 def my_reviews(request):
