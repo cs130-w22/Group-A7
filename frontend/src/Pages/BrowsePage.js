@@ -33,7 +33,7 @@ export default class BrowsePage extends Component {
       <Container>
         <h1>Browse Page</h1>
         <Form>
-          <Form.Group controlId="date">
+          <Form.Group controlId="neighborhood">
             <Form.Label>Neighborhood</Form.Label>
             <Form.Control
               as="select"
@@ -63,7 +63,7 @@ export default class BrowsePage extends Component {
               })}
             </Form.Control>
           </Form.Group>
-          <Form.Group controlId="date">
+          <Form.Group controlId="time">
             <Form.Label>Time</Form.Label>
             <Form.Control
               as="select"
@@ -95,7 +95,7 @@ export default class BrowsePage extends Component {
 
         <p>Select from the following restaurants:</p>
         <NavLink
-          to={`#/reserve/:${this.state.selected_restaurant_id}/:${this.state.selected_date}/:${this.state.selected_time}/:${this.state.selected_size}`}
+          to={`/reserve/${this.state.selected_restaurant_id}/${this.state.selected_date}/${this.state.selected_time}/${this.state.selected_size}`}
           onClick={this.makeBooking}
         >
           Make a booking
