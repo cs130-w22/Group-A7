@@ -34,7 +34,7 @@ def extract_resy_names(results):
     return resy_names
 
 
-
+#use previously acuired information to condense into a dictionary of places and their avaliable times
 def cleanser(places, text):
     delimeters = '|'.join(places)
     m_dict = {}
@@ -75,7 +75,7 @@ def get_scraper_info(c,d,s,q):
     query = q
     URL = f"https://resy.com/cities/{city}?date={date}&seats={seats}&query={query}"
     r = asession.run(get_results)
-    #print(r[0].html.text)
+    print(r[0].html.text)
     
     latter = r[0].html.text.split("Guests")
     former = latter[-1].split("‹")[0]

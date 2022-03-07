@@ -1,3 +1,4 @@
+/*script for creating the schemas for necessary sql tables*/
 CREATE TABLE restable (RestaurantID int, Time DateTime, PRIMARY KEY(RestaurantID));
 CREATE TABLE reviewtable (RestaurantID int, UserID int, Rating int, Review VARCHAR(1000));
 CREATE TABLE usertable (UserID int, UserName VARCHAR(30), Password VARCHAR(30),PRIMARY KEY(UserID));
