@@ -8,6 +8,6 @@ before_install:
   -pip install codecov
 install:
   -pip install ".[test]" .
-script: pytest -q backend/dinesmart/tests.py
+script: pytest -q 
 after_success:
   -codecov
