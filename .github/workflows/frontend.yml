@@ -20,4 +20,8 @@ jobs:
       - name: Install dependencies
         run: npm ci --prefix /home/runner/work/Group-A7/Group-A7/frontend
       - run: CI=false npm run build --if-present --prefix /home/runner/work/Group-A7/Group-A7/frontend
-      - run: npm test --prefix /home/runner/work/Group-A7/Group-A7/frontend
+      - run: npm test --prefix /home/runner/work/Group-A7/Group-A7/frontend -- --coverage
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v1
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
