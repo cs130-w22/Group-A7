@@ -1,9 +1,6 @@
 name: Python package
 
-on:
-  push:
-    branches: [ main ]
-
+on: [push]
 jobs:
   build:
 
@@ -11,16 +8,15 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Set up Python
-      uses: actions/setup-python@v2
-      with:
+        uses: actions/setup-python@v2
+        with:
          python-version: '3.x'
       - name: Install dependencies
-      run: |
+        run: |
          pip install pytest
          pip install pytest-cov
          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
-         pytest tests.py --doctest-modules --junitxml=junit/test-results.xml --cov=com --cov-report=xml --cov-report=html
-  
+         pytest tests.py --doctest-modules --junitxml=junit/test-results.xml --cov=com --cov-report=xml --cov-report=html 
          # deploy:
          # steps:
          # -name: Checkout source code
