@@ -12,6 +12,7 @@ import SignupPage from "./Pages/SignupPage";
 import BrowsePage from "./Pages/BrowsePage";
 import ReservePage from "./Pages/ReservePage";
 import ReviewPage from "./Pages/ReviewPage";
+import ProfilePage from "./Pages/ProfilePage";
 
 class App extends Component {
   state = {
@@ -27,7 +28,7 @@ class App extends Component {
         "Content-Type": "text/plain",
         "X-CSRFToken": Cookies.get("XSRF-TOKEN"),
       },
-      withCredentials: 'false',
+      withCredentials: "false",
     })
       .then((response) => {
         this.setState({ user: response.data });
@@ -61,7 +62,12 @@ class App extends Component {
       const user = props.user;
 
       if (user !== "") {
-        return <Navbar.Text>Signed in as: {user} .</Navbar.Text>;
+        return (
+          <div>
+            {/* <Navbar.Text>Signed in as: {user} .</Navbar.Text> */}
+            <Nav.Link href="#/profile"><h4 className="linkText">Signed in as: {user}</h4></Nav.Link>
+          </div>
+        );
       } else {
         return <div></div>;
       }
@@ -87,13 +93,14 @@ class App extends Component {
         <HashRouter>
           <div className="App">
             <Routes>
-              <Route exact path="/" element={<LandingPage/>} />
+              <Route exact path="/" element={<LandingPage />} />
               <Route path="/home" element={<HomePage />} />
               <Route path="/login" element={<LoginPage />} />
               <Route path="/signup" element={<SignupPage />} />
-              <Route path="/browse" element={<BrowsePage/>} />
-              <Route path="/reserve/" element={<ReservePage/>} />
-              <Route path="/review/" element={<ReviewPage/>} />
+              <Route path="/browse" element={<BrowsePage />} />
+              <Route path="/reserve/" element={<ReservePage />} />
+              <Route path="/review/" element={<ReviewPage />} />
+              <Route path="/profile/" element={<ProfilePage />} />
             </Routes>
           </div>
         </HashRouter>
