@@ -7,6 +7,8 @@ export default class SignupPage extends Component {
   state = {
     email: "",
     password: "",
+    name: "",
+    location: "",
     submitted: false,
     loggedIn: false,
   };
@@ -48,6 +50,8 @@ export default class SignupPage extends Component {
     var data = JSON.stringify({
       email: this.state.email,
       password: this.state.password,
+      name: this.state.name,
+      location: this.state.location
     });
     var config = {
       method: "post",
@@ -99,6 +103,22 @@ export default class SignupPage extends Component {
               Password must be between 6 to 20 characters which contain at least
               one numeric digit, one uppercase and one lowercase letter.
             </Form.Text>
+          </Form.Group>
+          <Form.Group controlId="name">
+            <Form.Label>Name</Form.Label>
+            <Form.Control
+              type="text"
+              value={this.state.name}
+              onChange={(e) => this.setState({ name: e.target.value })}
+            />
+          </Form.Group>
+          <Form.Group controlId="location">
+            <Form.Label>Location</Form.Label>
+            <Form.Control
+              type="text"
+              value={this.state.location}
+              onChange={(e) => this.setState({ location: e.target.value })}
+            />
           </Form.Group>
           <Col>
             <Row>
