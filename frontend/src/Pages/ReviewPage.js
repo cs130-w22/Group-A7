@@ -33,7 +33,7 @@ export default class ReviewPage extends Component {
 
   onSubmit = () => {
     var data = JSON.stringify({
-      restaurantName: this.state.restaurantName,
+      restaurant: this.state.restaurantName,
       rating: this.state.rating,
       content: this.state.longReview,
     });
