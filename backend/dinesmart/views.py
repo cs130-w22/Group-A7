@@ -327,7 +327,7 @@ def browse_restaurants(request):
 def add_review(request):
     try:
         payload = json.loads(request.body)
-        user = request.session["email"]
+        user = User.objects.get(email=request.session["email"])
         restaurant = payload["restaurant"]
         rating = payload["rating"]
         content = payload["content"]
