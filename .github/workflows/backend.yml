@@ -26,14 +26,13 @@ jobs:
     - name: Django aws eb deployment
       uses: joel-hanson/django-aws-eb-deploy@V1.1
       with:
-        python_version: '3.x'
-        flake8: true
-        aws_access_key_id: ${{ secrets.aws_access_key_id }}
-        aws_secret_access_key: ${{ secrets.aws_secret_access_key }}
-        django_path: backend
-        unit_testing: true
+    #    python_version: '3.x'
+     #   flake8: true
+     #   aws_access_key_id: ${{ secrets.aws_access_key_id }}
+      #  aws_secret_access_key: ${{ secrets.aws_secret_access_key }}
+       #unit_testing: true
         deploy: true
-        min_coverage: 10
-        security_check: true
-        flake8_config_file: "backend/.flake8"
+       # min_coverage: 10
+       # security_check: true
+       # flake8_config_file: "backend/.flake8"
 
