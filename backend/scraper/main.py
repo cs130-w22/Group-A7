@@ -70,6 +70,7 @@ def get_scraper_info(c,d,s,q):
 
     return cleanser(names, former)
 
+print(get_scraper_info("ny", "2022-03-07", "2", "mexican"))
 
 
 
