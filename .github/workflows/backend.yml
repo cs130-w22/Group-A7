@@ -18,18 +18,20 @@ jobs:
          python -m pip install django
          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
          pytest backend/dinesmart/tests.py
+         
   deploy:
-    steps:
-      - name: Checkout source code
-        run: zip -r deploy.zip . -x '*.git*'
-      - name: Deploy to EB
-        uses: einaregilsson/beanstalk-deploy@v20
-        with:
-            aws_access_key: ${{secrets.AWS_ACCESS_KEY}}
-            aws_secret_key: ${{secrets.AWS_SECRET_KEY}}
-            application_name: Dinesmart
-            environment_name: Dinesmartenv
-            region: us-west-1
-            version_label: 1
-            deployment_package: deploy.zip
+    - uses: actions/checkout@v2
+    - name: Django aws eb deployment
+      uses: joel-hanson/django-aws-eb-deploy@V1.1
+      with:
+        python_version: '3.x'
+        flake8: true
+        aws_access_key_id: ${{ secrets.aws_access_key_id }}
+        aws_secret_access_key: ${{ secrets.aws_secret_access_key }}
+        django_path: backend
+        unit_testing: true
+        deploy: true
+        min_coverage: 10
+        security_check: true
+        flake8_config_file: "backend/.flake8"
 
