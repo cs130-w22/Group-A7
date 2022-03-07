@@ -15,8 +15,9 @@ class UserProfile(models.Model):
     member_since = models.DateField(auto_now_add=True)
 
 class Restaurant(models.Model):
-    location = models.CharField(max_length=50)
-    cuisine = models.CharField(max_length=50)
+    name = models.CharField(max_length=50)
+    location = models.CharField(max_length=50, blank=True, null=True)
+    cuisine = models.CharField(max_length=50, blank=True, null=True)
     average_rating = models.DecimalField(decimal_places=3, max_digits=4, default=0)
     num_reviews = models.IntegerField(default=0)
 
