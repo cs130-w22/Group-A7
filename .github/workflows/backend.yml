@@ -21,19 +21,19 @@ jobs:
          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
          pytest tests.py --doctest-modules --junitxml=junit/test-results.xml --cov=com --cov-report=xml --cov-report=html
   
-  deploy:
-    steps:
-      -name: Checkout source code
-      -run: zip -r deploy.zip . -x '*.git*'
+         # deploy:
+         # steps:
+         # -name: Checkout source code
+         #-run: zip -r deploy.zip . -x '*.git*'
 
-      -name: Deploy to EB
-      -uses: einaregilsson/beanstalk-deploy@v20
-      with:
-        aws_access_key: ${{secrets.AWS_ACCESS_KEY}}
-        aws_secret_key: ${{secrets.AWS_SECRET_KEY}}
-        application_name: Dinesmart
-        environment_name: Dinesmartenv
-        region: us-west-1
-        version_label: 1
-        deployment_package: deploy.zip
+         #-name: Deploy to EB
+         #-uses: einaregilsson/beanstalk-deploy@v20
+         #      with:
+         #aws_access_key: ${{secrets.AWS_ACCESS_KEY}}
+         #aws_secret_key: ${{secrets.AWS_SECRET_KEY}}
+         # application_name: Dinesmart
+         # environment_name: Dinesmartenv
+         #region: us-west-1
+         #version_label: 1
+         #deployment_package: deploy.zip
 
