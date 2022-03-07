@@ -5,6 +5,7 @@ import axios from "axios";
 import Cookies from "js-cookie";
 
 import AccountDetails from "../Components/AccountDetails";
+import ListReviews from "../Components/ListReviews";
 export default class ProfilePage extends Component {
   state = {
     account: {
@@ -35,6 +36,8 @@ export default class ProfilePage extends Component {
       <Container>
         <h1>Your profile</h1>
         <AccountDetails account={this.state.account} />
+        <h2>Your reviews</h2>
+        <ListReviews/>
         <Col>
           <Row>
             <NavLink to="/browse/">Browse local restaurants</NavLink>
