@@ -1,11 +1,15 @@
 import React, { Component } from "react";
 import { Row, Col, Container, Form, Button, FormGroup } from "react-bootstrap";
 import { NavLink } from "react-router-dom";
-import AccountDetails from "../Components/AccountDetails";
+import axios from "axios";
+import Cookies from "js-cookie";
 
+import AccountDetails from "../Components/AccountDetails";
 export default class ProfilePage extends Component {
   state = {
-    account: null,
+    account: {
+        name: 'dummy'
+    }
   };
   componentDidMount() {
     axios({
