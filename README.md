@@ -1,3 +1,8 @@
+# Builds
+
+Our code builds on a push to any branch of our repository. You can monitor the status of the builds in the Actions tab, where you will see two processes: A Node.js process and a Python Package process.
+
+
 # Repository Template
 
 [![Build Status](https://travis-ci.org/cs130-w21/template.svg?branch=master)](https://travis-ci.org/cs130-w21/template)
