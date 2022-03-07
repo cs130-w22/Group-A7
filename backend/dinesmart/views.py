@@ -10,6 +10,7 @@ import random
 from django.views.decorators.csrf import csrf_exempt
 from django.core import serializers
 from django.forms.models import model_to_dict
+from scraper.main import get_restaurant_info
 
 
 from dinesmart.models import Users, UserAuthTokens, PasswordReset, Reviews
@@ -311,10 +312,12 @@ def browse_restaurants(request):
         payload = json.loads(request.body)
         city = payload["city"]
         date = payload["date"]
-        seats = payload["seats"]
+        seats = int(payload["seats"])
         cuisine = payload["cuisine"]
-    except:
-        return HttpResponse("missing/blank email or password", status=401)
+        data = get_restaurant_info(city, date, seats)
+        return JsonResponse(data)
+    except Exception as e:
+        return HttpResponse(e, status=401)
     
     response = {
         "rest1": {"times": ["5:45", "6:45", "7:45"], "price": "$$", "distance": "20", "cuisine": "Mexican"},
@@ -335,8 +338,8 @@ def add_review(request):
         review = Reviews(user=user, restaurant=restaurant, rating=int(rating), content=content)
         review.save()
         return HttpResponse("successfully added review", status=200)
-    except:
-        return HttpResponse("missing/blank email or password", status=401)
+    except Exception as e:
+        return HttpResponse(e, status=401)
 
 @csrf_exempt
 def my_reviews(request):
