@@ -39,7 +39,7 @@ def cleanser(places, text):
     delimeters = '|'.join(places)
     m_dict = {}
 
-    for r in names:
+    for r in places:
         for i in re.split(delimeters, text):
             if 'PM' in i or 'AM' in i:
                 for line in i.split('\n'):
@@ -69,6 +69,8 @@ def get_scraper_info(c,d,s,q):
     names = extract_resy_names(former)
 
     return cleanser(names, former)
+
+print(get_scraper_info("ny", "2022-03-07", "2", "mexican"))
 
 
 
