@@ -1,3 +1,5 @@
+from calendar import c
+from re import A
 from django.shortcuts import render
 from django.http import HttpResponse, JsonResponse
 from secrets import token_bytes
@@ -335,30 +337,40 @@ def browse_restaurants(request):
 
 @csrf_exempt
 def add_review(request):
-    # try:
-    payload = json.loads(request.body)
-    user = User.objects.get(email=request.session['email'])
-    restaurant, created = Restaurant.objects.get_or_create(name=payload["restaurant"])
-    rating = payload["rating"]
-    content = payload["content"]
-    review = Review(user=user, restaurant=restaurant, rating=int(rating), content=content)
-    review.save()
-    return HttpResponse("successfully added review", status=200)
-    # except Exception as e:
-    #     return HttpResponse(e.stracktrace(), status=401)
+    try:
+        payload = json.loads(request.body)
+        user = User.objects.get(email=request.session['email'])
+        restaurant, created = Restaurant.objects.get_or_create(name=payload["restaurant"])
+        rating = payload["rating"]
+        content = payload["content"]
+        review = Review(user=user, restaurant=restaurant, rating=int(rating), content=content)
+        review.save()
+        return HttpResponse("successfully added review", status=200)
+    except Exception as e:
+        return HttpResponse(e.stracktrace(), status=401)
 
 @csrf_exempt
 def my_reviews(request):
     if request.method != "POST":
         return HttpResponse("only POST calls accepted", status=404)
     user = User.objects.get(email=request.session['email'])
-    #input validation
     try:
         data = list(Review.objects.filter(user=user).values())  
         return JsonResponse(data, safe=False)    
     except Exception as e:
         return HttpResponse(e, status=401)
     
+@csrf_exempt
+def get_restaurant_by_id(request):
+    if request.method != "POST":
+        return HttpResponse("only POST calls accepted", status=404)
+    try:
+        payload = json.loads(request.body)
+        id = payload["id"]        
+        return JsonResponse(to_dict(Restaurant.objects.get(id=id)))  
+    except Exception as e:
+        return HttpResponse(e, status=401)   
+
 @csrf_exempt
 def get_user_profile(request):
     if request.method != "POST":
