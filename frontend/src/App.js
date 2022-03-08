@@ -10,9 +10,9 @@ import LandingPage from "./Pages/LandingPage";
 import LoginPage from "./Pages/LoginPage";
 import SignupPage from "./Pages/SignupPage";
 import BrowsePage from "./Pages/BrowsePage";
-import ReservePage from "./Pages/ReservePage";
 import ReviewPage from "./Pages/ReviewPage";
 import ProfilePage from "./Pages/ProfilePage";
+import RestaurantPage from "./Pages/RestaurantPage";
 
 class App extends Component {
   state = {
@@ -80,7 +80,7 @@ class App extends Component {
             <Nav.Link href="#/home">Home</Nav.Link>
             <Nav.Link href="#/login">Login</Nav.Link>
             <Nav.Link href="#/browse">Browse</Nav.Link>
-            <Nav.Link href="#/reserve">Reserve</Nav.Link>
+            <Nav.Link href="#/restaurant">Restaurant</Nav.Link>
             <Nav.Link href="#/review">Review</Nav.Link>
           </Nav>
           <Navbar.Collapse className="justify-content-end">
@@ -98,7 +98,7 @@ class App extends Component {
               <Route path="/login" element={<LoginPage />} />
               <Route path="/signup" element={<SignupPage />} />
               <Route path="/browse" element={<BrowsePage />} />
-              <Route path="/reserve/" element={<ReservePage />} />
+              <Route path="/restaurant/" element={<RestaurantPage />} />
               <Route path="/review/" element={<ReviewPage />} />
               <Route path="/profile/" element={<ProfilePage />} />
             </Routes>

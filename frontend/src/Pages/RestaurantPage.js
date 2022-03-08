@@ -1,11 +1,14 @@
 import React, { Component } from "react";
 import { Row, Col, Container, Form, Button, FormGroup } from "react-bootstrap";
-import {  NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import axios from "axios";
 import Cookies from "js-cookie";
+
+import ReviewTile from "../Components/ReviewTile.js";
 export default class RestaurantPage extends Component {
   state = {
     restaurantName: "",
+    reviews: [],
     loggedIn: false,
   };
 
@@ -29,7 +32,34 @@ export default class RestaurantPage extends Component {
       });
   }
 
+  findReviews = () => {
+    var data = JSON.stringify({
+      resturant: this.state.restaurantName,
+    });
+    axios({
+      method: "post",
+      url: "http://localhost:8000/getRestaurantReviews/",
+      headers: {
+        "Content-Type": "text/plain",
+        "X-CSRFToken": Cookies.get("XSRF-TOKEN"),
+      },
+      data: data,
+      withCredentials: "false",
+    })
+      .then((response) => {
+        if (response.data !== "") {
+          this.setState({ reviews: response.data });
+        }
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  };
+
   render() {
+    const listItems = Object.entries(this.state.reviews).map((r) => (
+      <ReviewTile key={r} review={r} />
+    ));
     return (
       <Container>
         <h1>Restaurant Page</h1>
@@ -45,21 +75,9 @@ export default class RestaurantPage extends Component {
               }
             />
           </Form.Group>
-          <Form.Group>
-            <Form.Label>Enter the restaurant details</Form.Label>
-            <Form.Control
-              type="text"
-              placeholder="Enter details"
-              value={this.state.reservationDetails}
-              onChange={(e) =>
-                this.setState({ reservationDetails: e.target.value })
-              }
-            />
-          </Form.Group>
         </Form>
-        <NavLink to="/home/" onClick={this.onSubmit}>
-          Submit
-        </NavLink>
+        <Button onClick={this.findReviews}>Find Reviews</Button>
+        {listItems}
       </Container>
     );
   }
