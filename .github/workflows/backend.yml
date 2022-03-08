@@ -15,6 +15,7 @@ jobs:
         run: |
          pip install pytest
          pip install pytest-cov
+         pip install requests
          python -m pip install django
          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
          pytest backend/scraper/scraper_tests.py
