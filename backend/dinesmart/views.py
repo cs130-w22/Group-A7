@@ -341,11 +341,11 @@ def add_review(request):
 def my_reviews(request):
     if request.method != "POST":
         return HttpResponse("only POST calls accepted", status=404)
-
+    user = User.objects.get(email=request.session['email'])
     #input validation
     try:
-        email = request.session["email"]
-        return JsonResponse(to_dict(Review.objects.filter(user=email)))
+        data = list(Review.objects.filter(user=user).values())  
+        return JsonResponse(data, safe=False)    
     except Exception as e:
         return HttpResponse(e, status=401)
     
