@@ -1,18 +1,25 @@
 import React, { Component } from "react";
 import { Row, Col, Container, Form, Button, FormGroup } from "react-bootstrap";
-import { useParams } from "react-router-dom";
+import { useSearchParams } from "react-router-dom";
 import axios from "axios";
 import Cookies from "js-cookie";
 
 import ReviewTile from "../Components/ReviewTile.js";
 export default class RestaurantPage extends Component {
+
+  getName = () => {
+    const urlSearchParams = new URLSearchParams(window.location.hash);
+    const params = Object.fromEntries(urlSearchParams.entries());
+    return params['#/restaurant?name']
+  }
   state = {
-    restaurantName: "", // this.props.match.params.restaurantName,
+    restaurantName: this.getName(), // this.props.match.params.name,
     reviews: [],
     loggedIn: false,
   };
 
   componentDidMount() {
+
     axios({
       method: "post",
       url: "http://localhost:8000/getCurrentUser/",
