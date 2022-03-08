@@ -8,7 +8,7 @@ export default class ReviewTile extends Component {
     restaurant_name: ""
   }
   componentDidMount() {
-    var data = JSON.stringify({restaurant_id: this.state.restaurant_id})
+    var data = JSON.stringify({id: this.props.review[1].restaurant_id})
     axios({
       method: "post",
       url: "http://localhost:8000/getRestaurantById/",
@@ -21,7 +21,7 @@ export default class ReviewTile extends Component {
     })
       .then((response) => {
         if (response.data !== "") {
-          this.setState({ restaurant_name: response.data });
+          this.setState({ restaurant_name: response.data.name });
         }
       })
       .catch(function (error) {
