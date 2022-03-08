@@ -38,7 +38,7 @@ test("browsepage shows date option", () => {
   expect(date).toBeInTheDocument();
 });
 
-test("browsepage shows time option", () => {
+test("browsepage shows cuisine option", () => {
   render(
     <BrowserRouter>
       <Routes>
@@ -46,11 +46,11 @@ test("browsepage shows time option", () => {
       </Routes>
     </BrowserRouter>
   );
-  const time = screen.getByText("Time");
-  expect(time).toBeInTheDocument();
+  const cuisine = screen.getByText("Cuisine");
+  expect(cuisine).toBeInTheDocument();
 });
 
-test("homepage shows size option", () => {
+test("browsepage shows size option", () => {
   render(
     <BrowserRouter>
       <Routes>
@@ -60,4 +60,16 @@ test("homepage shows size option", () => {
   );
   const size = screen.getByText("Size");
   expect(size).toBeInTheDocument();
+});
+
+test("browsepage shows search", () => {
+  render(
+    <BrowserRouter>
+      <Routes>
+        <Route path="*" element={<BrowsePage />}></Route>
+      </Routes>
+    </BrowserRouter>
+  );
+  const search = screen.getByText("Search");
+  expect(search).toBeInTheDocument();
 });

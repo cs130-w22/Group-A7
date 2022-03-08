@@ -3,55 +3,122 @@ import RestaurantTile from "../Components/RestaurantTile";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 test("restaurant tile name shows", () => {
-  const dummyRestaurant = {
-    name: "dummyName",
+  const details = {
+    tag: "tag",
+    times: [],
+    link: "link"
   };
   render(
     <BrowserRouter>
       <Routes>
         <Route
           path="*"
-          element={<RestaurantTile restaurant={dummyRestaurant} />}
+          element={<RestaurantTile name="abc" details={details} />}
         ></Route>
       </Routes>
     </BrowserRouter>
   );
-  const name = screen.getByText("dummyName");
+  const name = screen.getByText("abc");
   expect(name).toBeInTheDocument();
 });
 
-test("restaurant tile location shows", () => {
-    const dummyRestaurant = {
-      location: "dummyLocation",
-    };
-    render(
-      <BrowserRouter>
-        <Routes>
-          <Route
-            path="*"
-            element={<RestaurantTile restaurant={dummyRestaurant} />}
-          ></Route>
-        </Routes>
-      </BrowserRouter>
-    );
-    const location = screen.getByText("dummyLocation");
-    expect(location).toBeInTheDocument();
-  });
 
-  test("restaurant tile price shows", () => {
-    const dummyRestaurant = {
-      price: "dummyPrice",
-    };
-    render(
-      <BrowserRouter>
-        <Routes>
-          <Route
-            path="*"
-            element={<RestaurantTile restaurant={dummyRestaurant} />}
-          ></Route>
-        </Routes>
-      </BrowserRouter>
-    );
-    const price = screen.getByText('Price: dummyPrice');
-    expect(price).toBeInTheDocument();
-  });
+test("restaurant tile tag shows", () => {
+  const details = {
+    tag: "tag",
+    times: [],
+    link: "link"
+  };
+  render(
+    <BrowserRouter>
+      <Routes>
+        <Route
+          path="*"
+          element={<RestaurantTile name="abc" details={details} />}
+        ></Route>
+      </Routes>
+    </BrowserRouter>
+  );
+  const tag = screen.getByText("tag");
+  expect(tag).toBeInTheDocument();
+});
+
+test("restaurant tile times shows", () => {
+  const details = {
+    tag: "tag",
+    times: [],
+    link: "link"
+  };
+  render(
+    <BrowserRouter>
+      <Routes>
+        <Route
+          path="*"
+          element={<RestaurantTile name="abc" details={details} />}
+        ></Route>
+      </Routes>
+    </BrowserRouter>
+  );
+  const time = screen.getByText("Times:");
+  expect(time).toBeInTheDocument();
+});
+
+test("restaurant tile times shows", () => {
+  const details = {
+    tag: "tag",
+    times: [],
+    link: "link"
+  };
+  render(
+    <BrowserRouter>
+      <Routes>
+        <Route
+          path="*"
+          element={<RestaurantTile name="abc" details={details} />}
+        ></Route>
+      </Routes>
+    </BrowserRouter>
+  );
+  const time = screen.getByText("Times:");
+  expect(time).toBeInTheDocument();
+});
+
+test("restaurant tile reviews shows", () => {
+  const details = {
+    tag: "tag",
+    times: [],
+    link: "link"
+  };
+  render(
+    <BrowserRouter>
+      <Routes>
+        <Route
+          path="*"
+          element={<RestaurantTile name="abc" details={details} />}
+        ></Route>
+      </Routes>
+    </BrowserRouter>
+  );
+  const review = screen.getByText("See reviews");
+  expect(review).toBeInTheDocument();
+});
+
+test("restaurant tile booking shows", () => {
+  const details = {
+    tag: "tag",
+    times: [],
+    link: "link"
+  };
+  render(
+    <BrowserRouter>
+      <Routes>
+        <Route
+          path="*"
+          element={<RestaurantTile name="abc" details={details} />}
+        ></Route>
+      </Routes>
+    </BrowserRouter>
+  );
+  const link = screen.getByText("Make booking here");
+  expect(link).toBeInTheDocument();
+});
