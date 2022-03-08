@@ -1,33 +1,49 @@
 import React, { Component } from "react";
 import { Row, Col, Container, Form, Button, FormGroup } from "react-bootstrap";
 import { NavLink } from "react-router-dom";
-
+import axios from "axios";
+import Cookies from "js-cookie";
+import ListRestaurants from "../Components/ListRestaurants";
 export default class BrowsePage extends Component {
   state = {
-    possible_dates: [],
-    possible_times: [],
-    possible_sizes: [],
-    possible_neighborhoods: [],
-    selected_date: "",
-    selected_time: "",
-    selected_size: "",
-    selected_neighborhood: "",
+    location: "",
+    cuisine: "",
+    date: "",
+    size: "",
     restaurants: [],
-    selected_restaurant_id: "",
     loggedIn: false,
   };
   componentDidMount() {
     // some logic to verify logged in
     this.loggedIn = true;
-
-    // replace with API calls
-    this.setState({
-      possible_dates: ["Saturday", "Sunday"],
-      possible_times: ["12", "1", "2"],
-      possible_sizes: ["2", "4", "6"],
-      possible_neighborhoods: ["Westwood", "Santa Monica", "Sawtelle", "DTLA"],
-    });
   }
+
+  search = () => {
+    var data = JSON.stringify({
+      city: this.state.location,
+      date: this.state.date,
+      seats: this.state.size,
+      cuisine: this.state.cuisine,
+    });
+    axios({
+      method: "post",
+      url: "http://localhost:8000/browseRestaurants/",
+      headers: {
+        "Content-Type": "text/plain",
+        "X-CSRFToken": Cookies.get("XSRF-TOKEN"),
+      },
+      data: data,
+      withCredentials: "false",
+    })
+      .then((response) => {
+        if (response.data !== "") {
+          this.setState({ restaurants: response.data });
+        }
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  };
   render() {
     return (
       <Container>
@@ -36,64 +52,43 @@ export default class BrowsePage extends Component {
           <Form.Group controlId="neighborhood">
             <Form.Label>Neighborhood</Form.Label>
             <Form.Control
-              as="select"
-              custom="true"
-              onChange={(e) =>
-                this.setState({ selected_neighborhood: e.target.value })
-              }
-            >
-              <option value="">Choose...</option>
-              {this.state.possible_neighborhoods.map((o) => {
-                const neighborhood = o;
-                return <option key={neighborhood}>{neighborhood}</option>;
-              })}
-            </Form.Control>
+              type="text"
+              placeholder="Enter location"
+              value={this.state.location}
+              onChange={(e) => this.setState({ location: e.target.value })}
+            />
+          </Form.Group>
+          <Form.Group controlId="cuisine">
+            <Form.Label>Cuisine</Form.Label>
+            <Form.Control
+              type="text"
+              placeholder="Enter cuisine"
+              value={this.state.cuisine}
+              onChange={(e) => this.setState({ cuisine: e.target.value })}
+            />
           </Form.Group>
           <Form.Group controlId="date">
             <Form.Label>Date</Form.Label>
             <Form.Control
-              as="select"
-              custom="true"
-              onChange={(e) => this.setState({ selected_date: e.target.value })}
-            >
-              <option value="">Choose...</option>
-              {this.state.possible_dates.map((o) => {
-                const date = o;
-                return <option key={date}>{date}</option>;
-              })}
-            </Form.Control>
+              type="text"
+              placeholder="YYYY-MM-DD"
+              value={this.state.date}
+              onChange={(e) => this.setState({ date: e.target.value })}
+            />
           </Form.Group>
-          <Form.Group controlId="time">
-            <Form.Label>Time</Form.Label>
-            <Form.Control
-              as="select"
-              custom="true"
-              onChange={(e) => this.setState({ selected_time: e.target.value })}
-            >
-              <option value="">Choose...</option>
-              {this.state.possible_times.map((o) => {
-                const time = o;
-                return <option key={time}>{time}</option>;
-              })}
-            </Form.Control>
-          </Form.Group>
-          <Form.Group controlId="location">
+          <Form.Group controlId="size">
             <Form.Label>Size</Form.Label>
             <Form.Control
-              as="select"
-              custom="true"
-              onChange={(e) => this.setState({ selected_size: e.target.value })}
-            >
-              <option value="">Choose...</option>
-              {this.state.possible_sizes.map((o) => {
-                const size = o;
-                return <option key={size}>{size}</option>;
-              })}
-            </Form.Control>
+              type="text"
+              placeholder="Enter party size"
+              value={this.state.size}
+              onChange={(e) => this.setState({ size: e.target.value })}
+            />
           </Form.Group>
         </Form>
-
+        <Button onClick={this.search}>Search</Button>
         <p>Select from the following restaurants:</p>
+        <ListRestaurants restaurants={this.state.restaurants}/>
         <NavLink
           to={`/reserve/${this.state.selected_restaurant_id}/${this.state.selected_date}/${this.state.selected_time}/${this.state.selected_size}`}
           onClick={this.makeBooking}
