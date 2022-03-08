@@ -2,10 +2,9 @@ from django.db import models
 from django.core.validators import MinValueValidator, MaxValueValidator
 from itertools import chain
 
-# Create your models here.
 """File to keep track of the various classes that Django interacts with, each is a way to keep track of various actors and important classes they interact with"""
 # Create your models here.
-class Users(models.Model):
+class User(models.Model):
     """Class to represent a user, each has a email and password to log in with"""
     email = models.CharField(max_length=50, primary_key=True)
     password = models.CharField(max_length=200)
@@ -52,6 +51,7 @@ class Reviews(models.Model):
     rating = models.IntegerField(validators=[MinValueValidator(0),
                                        MaxValueValidator(5)])
     content = models.CharField(max_length=500)
+    
 def to_dict(instance):
     opts = instance._meta
     data = {}
