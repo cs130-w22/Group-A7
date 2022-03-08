@@ -3,6 +3,7 @@ from django.core.validators import MinValueValidator, MaxValueValidator
 from itertools import chain
 
 """File to keep track of the various classes that Django interacts with, each is a way to keep track of various actors and important classes they interact with"""
+
 # Create your models here.
 class User(models.Model):
     """Class to represent a user, each has a email and password to log in with"""
@@ -51,7 +52,7 @@ class Reviews(models.Model):
     rating = models.IntegerField(validators=[MinValueValidator(0),
                                        MaxValueValidator(5)])
     content = models.CharField(max_length=500)
-    
+
 def to_dict(instance):
     opts = instance._meta
     data = {}
