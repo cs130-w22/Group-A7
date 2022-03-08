@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 import os
 import sys
-
+"""simple class to set up django module for communcation"""
 if __name__ == '__main__':
     os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'backend.settings')
     try:
