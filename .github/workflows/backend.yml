@@ -15,26 +15,30 @@ jobs:
         run: |
          pip install pytest
          pip install pytest-cov
+         pip install requests
+         pip install BeautifulSoup4
+         pip install django-cors-headers
          python -m pip install django
          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
-         pytest backend/dinesmart/tests.py
+         pytest backend/scraper/scraper_tests.py
+         python3 backend/manage.py test
          
-  deploy:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout source code
-        uses: actions/checkout@v2
-      - name: Generate deployment
-        run: zip -r deploy.zip . -x '*.git*'
-      - name: Deploy to EB
-        uses: einaregilsson/beanstalk-deploy@v20
-        with:
-            aws_access_key: ${{ secrets.aws_access_key_id }}
-            aws_secret_key: ${{ secrets.aws_secret_access_key }}
-            application_name: Dinesmart
-            environment_name: Dinesmart-env
-            region: us-west-1
-            use_existing_version_if_available: true
-            version_label: 12345
-            deployment_package: deploy.zip
+  #deploy:
+   # runs-on: ubuntu-latest
+    #steps:
+    #  - name: Checkout source code
+     #   uses: actions/checkout@v2
+     # - name: Generate deployment
+     #   run: zip -r deploy.zip . -x '*.git*'
+     # - name: Deploy to EB
+     #   uses: einaregilsson/beanstalk-deploy@v20
+     #   with:
+     #       aws_access_key: ${{ secrets.aws_access_key_id }}
+     #       aws_secret_key: ${{ secrets.aws_secret_access_key }}
+      #      application_name: Dinesmart
+       #     environment_name: Dinesmart-env
+        #    region: us-west-1
+         #   use_existing_version_if_available: true
+          #  version_label: 12345
+           # deployment_package: deploy.zip
 
