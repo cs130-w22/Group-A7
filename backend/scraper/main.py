@@ -23,12 +23,11 @@ class Scraper:
 
         url_time = ""
         if hhtime is not None:
-            url_time = f"&time={hhtime}"
+            url_time = f"&time={hhtime}%3A00&type=ALL_EXPERIENCES"
         url_cuisine = ""
         if cuisine is not None:
             url_cuisine = f"&cuisines={cuisine}"
         url = url + url_time + url_cuisine
-        print(url)
 
         # set up scraping
         r = requests.get(url)
@@ -76,6 +75,7 @@ class Scraper:
         self.reservations = time_dict
         self.tags = tag_dict
         self.hyperlinks = href_dict
+        return self.reservations
 
     # get reservation times
     def get_restaurant_times(self):
