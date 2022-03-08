@@ -30,9 +30,11 @@ export default class ListReviews extends Component {
   }
   render() {
     console.log(this.state.reviews);
-    return <ReviewTile review={this.state.reviews} />;
+    // return <ReviewTile review={this.state.reviews} />;
     // remove this once multiple reviews are suported
-    // const listItems = this.state.reviews.map((r) => <ReviewTile review={r} />);
-    // return <Container>{listItems}</Container>;
+    const listItems = Object.entries(this.state.reviews).map(
+      (r) => <ReviewTile key={r} review={r}/>
+    );
+    return <Container>{listItems}</Container>;
   }
 }
