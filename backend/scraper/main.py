@@ -76,6 +76,7 @@ class Scraper:
         self.reservations = time_dict
         self.tags = tag_dict
         self.hyperlinks = href_dict
+        return self.reservations
 
     # get reservation times
     def get_restaurant_times(self):
