@@ -35,6 +35,9 @@ class UserTestCase(TestCase):
         UserAuthTokens.objects.create(user=a2, email="a2@gmail.com", token="tmptoken1", timestamp="12:00:00")
         UserAuthTokens.objects.create(user=a3, email="a3@gmail.com", token="tmptoken2", timestamp="01:00:00")
         
+        #PasswordReset
+        PasswordReset.objects.create(email="a2@gmail.com", resetToken="tmptoken1", timestamp="12:00:00")
+        PasswordReset.objects.create(email="a3@gmail.com", resetToken="tmptoken2", timestamp="01:00:00")
 
     def testUsers(self):
         
@@ -111,6 +114,17 @@ class UserTestCase(TestCase):
         self.assertEqual(u3.email,"a3@gmail.com")
         self.assertEqual(u2.token,"tmptoken1")
         self.assertEqual(u3.token,"tmptoken2")
+        self.assertEqual(u2.timestamp,"12:00:00")
+        self.assertEqual(u3.timestamp,"01:00:00")
+
+    def testPasswordReset(self):
+        #get PasswordResets
+        p2 = PasswordReset.objects.get(email="a2@gmail.com")
+        p3 = PasswordReset.objects.get(email="a3@gmail.com")
+        self.assertEqual(p2.resetToken,"tmptoken1")
+        self.assertEqual(p3.resetToken,"tmptoken2")
+        self.assertEqual(p2.timestamp,"12:00:00")
+        self.assertEqual(p3.timestamp,"01:00:00")
 
 
 
