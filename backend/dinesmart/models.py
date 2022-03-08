@@ -12,7 +12,7 @@ class User(models.Model):
 
 class UserProfile(models.Model):
     """Class to represent a userprifle with things like their numbers of bookings and how long they've been a member"""
-    user = models.OneToOneField(User, on_delete=models.CASCADE, blank=True, null=True)
+    # user = models.OneToOneField(User, on_delete=models.CASCADE, blank=True, null=True)
     name = models.CharField(max_length=50, default="")
     location = models.CharField(max_length=50, default="")
     num_bookings = models.IntegerField(default=0)
@@ -28,7 +28,7 @@ class Restaurant(models.Model):
 
 class Review(models.Model):
     """class to represent a review with all of its info"""
-    user = models.ForeignKey(User, on_delete=models.CASCADE, blank=True, null=True)
+    # user = models.ForeignKey(User, on_delete=models.CASCADE, blank=True, null=True)
     restaurant = models.ForeignKey(Restaurant, on_delete=models.CASCADE, blank=True, null=True)
     rating = models.IntegerField(validators=[MinValueValidator(0),
                                        MaxValueValidator(5)])
@@ -37,7 +37,7 @@ class Review(models.Model):
 
 class UserAuthTokens(models.Model):
     """class to keep track of a user login authorization with an email a login token and a timestamp of when the login ocurred"""
-    user = models.ForeignKey(User, on_delete=models.CASCADE, blank=True, null=True)
+    # user = models.ForeignKey(User, on_delete=models.CASCADE, blank=True, null=True)
     email = models.CharField(max_length=50)
     token = models.CharField(max_length=200)
     timestamp = models.CharField(max_length=50)
@@ -47,14 +47,6 @@ class PasswordReset(models.Model):
     email = models.CharField(max_length=50)
     resetToken = models.CharField(max_length=50)
     timestamp = models.CharField(max_length=50)
-
-class Reviews(models.Model):
-    """class to keep track of a particular vreview for a restaurant and its content"""
-    user = models.CharField(max_length=50)
-    restaurant = models.CharField(max_length=50)
-    rating = models.IntegerField(validators=[MinValueValidator(0),
-                                       MaxValueValidator(5)])
-    content = models.CharField(max_length=500)
 
 def to_dict(instance):
     opts = instance._meta

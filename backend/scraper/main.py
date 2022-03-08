@@ -1,6 +1,6 @@
 import requests
 from bs4 import BeautifulSoup
-import ResyScraper as rs
+from .ResyScraper import ResyScraper as rs
 
 class Scraper:
     def __init__(self):
