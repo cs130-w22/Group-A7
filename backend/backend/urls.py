@@ -30,4 +30,6 @@ urlpatterns = [
     path('browseRestaurants/', views.browse_restaurants),
     path('addReview/', views.add_review),
     path('myReviews/', views.my_reviews),
+    path('getUserProfile/', views.get_user_profile),
+
 ]
