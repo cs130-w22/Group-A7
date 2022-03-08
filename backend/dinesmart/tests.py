@@ -140,7 +140,7 @@ class UserTestCase(TestCase):
         self.assertEqual(u3.email,"a3@gmail.com")
         self.assertEqual(u2.token,"tmptoken1")
         self.assertEqual(u3.token,"tmptoken2")
-        self.assertEqual(u2.timestamp,"12:00:00")
+        self.assertEqual(u2.timestamp,"12:00:00") 
         self.assertEqual(u3.timestamp,"01:00:00")
 
 
