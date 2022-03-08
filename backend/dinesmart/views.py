@@ -23,6 +23,11 @@ from dinesmart.models import User, UserAuthTokens, PasswordReset, Review, Restau
 
 @csrf_exempt
 def create_user(request):
+    """Method to create a user instance with an email and a password
+    Recieves: request, a payload with user information
+    Returns: an http respoinse to display describing the success or failure to create a user
+
+    """
     #only accept post requests
     if request.method != "POST":
         return HttpResponse("only POST calls accepted", status=404)
@@ -68,6 +73,11 @@ def create_user(request):
 
 @csrf_exempt
 def login(request):
+    """Method to login a user by validating or invalidating their given info
+    Recieves: request, a payload with theoretically correct login info
+    Returns: an http respoinse to display describing the success or failure to login a particular user
+
+    """
     #only accept post requests
     if request.method != "POST":
         return HttpResponse("only POST calls accepted", status=404)
@@ -99,6 +109,11 @@ def login(request):
     return HttpResponse("login successful", status=200)
 
 def hash_password(password):
+    """Method to hash a given password for encryption purposes
+    Recieves: password, a password to hash
+    Returns: hash_password a password that has been hashed
+
+    """
     key = 'b\'\\xd3\\xf4\\xb7X\\xbd\\x07"\\xf4a\\\'\\xf5\\x16\\xd7a\\xa4\\xbd\\xf0\\xe7\\x10\\xdeR\\x0el\\xc2fW\\x80\\xfd\\xd39\\x953\''
     passwordbytes = bytes(password, 'utf-8')
     keybytes = bytes(key, 'utf-8')
@@ -110,6 +125,10 @@ def hash_password(password):
 #this function is just used as a test to make sure the session authentication is working
 @csrf_exempt
 def auth_test(request):
+    """Method to test session authentication
+    Recieves: request, the request paylod
+    Returns: http response to validate or invalidate authorization
+    """
     try:
         if checkAuthToken(request.session['email'], request.session['token']):
             return HttpResponse("authenticated", status=200)
@@ -120,6 +139,10 @@ def auth_test(request):
 
 #checks that the user's session is authenticated
 def checkAuthToken(request):
+    """Method to validate a users session
+    Recieves: request, the info to check against an authtoken
+    Returns: boolean representing a validated or invalidated authentication request
+    """
     try:
         email = request.session['email'] 
         token = request.session['token']
@@ -141,6 +164,10 @@ def checkAuthToken(request):
 
 #creates the authentication token for sessions
 def createAuthToken(email):
+    """Method to create the authentication token for an email
+    Recieves: email, the email for which to create the authentication token
+    Returns: hashedToken, the token corresponding to the given email but hashed for encryption
+    """
     #create secure 32 byte token
     token = str(token_bytes(32))
     userAndToken = UserAuthTokens(email=email, token=token, timestamp=time.time())
@@ -161,6 +188,10 @@ def createAuthToken(email):
 
 @csrf_exempt
 def logout(request):
+    """Method to logout a particular user
+    Recieves: request, the payload describing user intent to logout
+    Returns: http response showing the success or failure of a user to logout
+    """
     #only accept post requests
     if request.method != "POST":
         return HttpResponse("only POST calls accepted", status=404)
@@ -178,6 +209,10 @@ def logout(request):
 
 @csrf_exempt
 def get_current_user(request):
+    """Method to get the user that is currently logged in
+    Recieves: request, the payload to validate whether a particular user is logged in
+    Returns: httprespone validating or invalidating the logged in state of a user
+    """
     #only accept post requests
     if request.method != "POST":
         return HttpResponse("only POST calls accepted", status=404)
@@ -194,7 +229,10 @@ def get_current_user(request):
 
 @csrf_exempt
 def reset_password(request):
-
+    """Method to reset the password for a user
+    Recieves: request, payload containing reset information
+    Returns: httpresponse describing reset success
+    """
     #only accept post requests
     if request.method != "POST":
         return HttpResponse("only POST calls accepted", status=404)
@@ -247,6 +285,10 @@ def reset_password(request):
 
 @csrf_exempt
 def request_password_reset(request):
+    """Method to request the reset of a password
+    Recieves: request, payload for which to create a reset password request
+    Returns: http response decribing success or failure of reste request
+    """
     #only accept post requests
     if request.method != "POST":
         return HttpResponse("only POST calls accepted", status=404)
@@ -279,6 +321,10 @@ def request_password_reset(request):
 
 #sends a reset email given a token and an email
 def sendResetEmail(email, token):
+    """Method to send the email to reset password
+    Recieves: email, email to send ti; token, authorization token for password reset
+    Returns: nothing
+    """
     import smtplib, ssl
 
     port = 465  # For SSL
@@ -305,11 +351,18 @@ def sendResetEmail(email, token):
 
 # returns a randomly generated token of length N
 def randStr(chars = string.ascii_uppercase + string.ascii_lowercase + string.digits, N=10):
-	return ''.join(random.choice(chars) for _ in range(N))
+    """Method to randomly generate a token
+    Recieves: chars, characters on can use; N length of string
+    Returns: nothing
+    """
+    return ''.join(random.choice(chars) for _ in range(N))
 
 @csrf_exempt
 def browse_restaurants(request):
-
+    """Method to send the email to reset password
+    Recieves: email, email to send ti; token, authorization token for password reset
+    Returns: nothing
+    """
     if request.method != "POST":
         return HttpResponse("only POST calls accepted", status=404)
 
@@ -351,6 +404,10 @@ def add_review(request):
 
 @csrf_exempt
 def my_reviews(request):
+    """Method to see a user's reviews
+    Recieves: request, the request to get your reviews
+    Returns: httpresponse showing reviews
+    """
     if request.method != "POST":
         return HttpResponse("only POST calls accepted", status=404)
     user = User.objects.get(email=request.session['email'])
