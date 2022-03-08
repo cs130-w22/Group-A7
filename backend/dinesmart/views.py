@@ -406,8 +406,6 @@ def add_review(request):
     except Exception as e:
         return HttpResponse(e.stracktrace(), status=401)
 
-
-
 @csrf_exempt
 def my_reviews(request):
     """Method to see a user's reviews
