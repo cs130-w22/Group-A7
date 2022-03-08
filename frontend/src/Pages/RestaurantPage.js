@@ -1,13 +1,13 @@
 import React, { Component } from "react";
 import { Row, Col, Container, Form, Button, FormGroup } from "react-bootstrap";
-import { NavLink } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import axios from "axios";
 import Cookies from "js-cookie";
 
-// import ReviewTile from "../Components/ReviewTile.js";
+import ReviewTile from "../Components/ReviewTile.js";
 export default class RestaurantPage extends Component {
   state = {
-    restaurantName: this.props.restaurantName,
+    restaurantName: "", // this.props.match.params.restaurantName,
     reviews: [],
     loggedIn: false,
   };
@@ -34,7 +34,7 @@ export default class RestaurantPage extends Component {
 
   findReviews = () => {
     var data = JSON.stringify({
-      resturant: this.state.restaurantName,
+      restaurant: this.state.restaurantName,
     });
     axios({
       method: "post",
@@ -57,12 +57,12 @@ export default class RestaurantPage extends Component {
   };
 
   render() {
-    // const listItems = Object.entries(this.state.reviews).map((r) => (
-    //   <ReviewTile key={r} review={r} />
-    // ));
+    const listItems = Object.entries(this.state.reviews).map((r) => (
+      <ReviewTile key={r} review={r} />
+    ));
     return (
       <Container>
-        <h1>Restaurant Page</h1>
+        <h1>Restaurant Review Page</h1>
         <Form>
           <Form.Group>
             <Form.Label>Enter the restaurant name</Form.Label>
@@ -77,7 +77,7 @@ export default class RestaurantPage extends Component {
           </Form.Group>
         </Form>
         <Button onClick={this.findReviews}>Find Reviews</Button>
-        {/* {listItems} */}
+        {listItems}
       </Container>
     );
   }

@@ -31,10 +31,10 @@ export default class ReviewTile extends Component {
   render() {
     return (
       <Container>
-        <h2>Restaurant id: {this.state.restaurant_name}</h2>
-        <h2>Written by: {this.props.review[1].user_id} on {this.props.review[1].timestamp}</h2>
-        <h2>Stars: {this.props.review[1].rating}</h2>
-        <h2>Review: {this.props.review[1].content}</h2>
+        <h2>{this.state.restaurant_name}</h2>
+        <h3>Written by: {this.props.review[1].user_id} on {this.props.review[1].timestamp}</h3>
+        <h3>Stars: {this.props.review[1].rating}</h3>
+        <h3>Review: {this.props.review[1].content}</h3>
       </Container>
     );
   }
