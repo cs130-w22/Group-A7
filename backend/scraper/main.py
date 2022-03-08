@@ -1,5 +1,6 @@
 import requests
 from bs4 import BeautifulSoup
+import ResyScraper as rs
 
 class Scraper:
     def __init__(self):
@@ -7,11 +8,11 @@ class Scraper:
         self.reservations = dict()
         self.hyperlinks = dict()
         self.tags = dict()
+        self.resy_scraper = rs.ResyScraper()
 
-    # scrape restaurant names and reservation times for given search parameters
+    # scrape restaurant names and reservation times for given search parameters from exploretock.com and resy.com
     def scrape_restaurant_info(self, city, date, size, hhtime=None, cuisine=None):
         """
-        Method to
         Receives: restaurant reservation query parameters - city, date, size, time in HH format (optional),
         cuisine (optional)
         Returns: Void; stores reservation times, hyperlinks, and descriptive tags for discovered restaurants
@@ -75,12 +76,22 @@ class Scraper:
         self.reservations = time_dict
         self.tags = tag_dict
         self.hyperlinks = href_dict
-        return self.reservations
+
+        # scrape Resy and merge relevant dicts
+        if cuisine is None:
+            cuisine = ""
+
+        self.resy_scraper.get_resy_info(city, date, size, cuisine)
+        resy_times = self.resy_scraper.get_times()
+        resy_links = self.resy_scraper.get_links()
+        if len(resy_times) > 0:
+            self.reservations.update(resy_times)
+        if len(resy_links) > 0:
+            self.hyperlinks.update(resy_links)
 
     # get reservation times
     def get_restaurant_times(self):
         """
-        Method to
         Receives: No parameters
         Returns: Available reservation times
         """
@@ -89,7 +100,6 @@ class Scraper:
     # get restaurant tags
     def get_restaurant_tags(self):
         """
-        Method to
         Receives: No parameters
         Returns: Restaurant descriptive tags
         """
@@ -98,7 +108,6 @@ class Scraper:
     # get restaurant hyperlinks
     def get_restaurant_hyperlinks(self):
         """
-        Method to
         Receives: No parameters
         Returns: Hyperlinks to restaurants
         """
