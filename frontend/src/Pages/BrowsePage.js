@@ -89,12 +89,6 @@ export default class BrowsePage extends Component {
         <Button onClick={this.search}>Search</Button>
         <p>Select from the following restaurants:</p>
         <ListRestaurants restaurants={this.state.restaurants}/>
-        <NavLink
-          to={`/reserve/${this.state.selected_restaurant_id}/${this.state.selected_date}/${this.state.selected_time}/${this.state.selected_size}`}
-          onClick={this.makeBooking}
-        >
-          Make a booking
-        </NavLink>
       </Container>
     );
   }
