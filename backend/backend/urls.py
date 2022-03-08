@@ -32,5 +32,5 @@ urlpatterns = [
     path('myReviews/', views.my_reviews),
     path('getUserProfile/', views.get_user_profile),
     path('getRestaurantReviews/', views.get_reviews_by_restaurant),
-
+    path('getRestaurantById/', views.get_restaurant_by_id),
 ]
