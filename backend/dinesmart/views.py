@@ -10,9 +10,12 @@ import random
 from django.views.decorators.csrf import csrf_exempt
 from django.core import serializers
 from django.forms.models import model_to_dict
+from datetime import date
+
+from scraper.main import get_restaurant_info
 
 
-from dinesmart.models import Users, UserAuthTokens, PasswordReset, Reviews
+from dinesmart.models import User, UserAuthTokens, PasswordReset, Review, Restaurant, UserProfile, to_dict
 
 # Create your views here.
 
@@ -32,6 +35,8 @@ def create_user(request):
         payload = json.loads(request.body)
         email = payload["email"]
         password = payload["password"]
+        name = payload["name"]
+        location = payload["location"]
     except:
         return HttpResponse("missing/blank email or password", status=401)
 
@@ -40,7 +45,7 @@ def create_user(request):
 
     # make sure email isn't already taken
     try:
-        user_count = Users.objects.filter(email=email).count() 
+        user_count = User.objects.filter(email=email).count() 
         if user_count != 0:
             return HttpResponse("email already in use", status=406)
     except Exception as e:
@@ -49,9 +54,11 @@ def create_user(request):
     hashed_password = hash_password(password)
 
     # save user in database
-    user = Users(email=email, password=hashed_password)
+    user = User(email=email, password=hashed_password)
+    profile = UserProfile(user=user, name=name, location=location)
     try:
         user.save()
+        profile.save()
         #create authentication token for session
         token = createAuthToken(email)
 
@@ -86,9 +93,7 @@ def login(request):
 
     #make sure user exists
     try:
-        user_count = Users.objects.filter(email=email, password=hashed_password).count()
-        if user_count != 1:
-            return HttpResponse("unable to find user", status=404)
+        user = User.objects.get(email=email, password=hashed_password)
     except:
         return HttpResponse("unable to find user", status=404)
 
@@ -266,7 +271,7 @@ def reset_password(request):
     hashedPassword = str(h.hexdigest())
     
     #save user in database
-    user = Users.objects.get(email=email)
+    user = User.objects.get(email=email)
     user.password = hashedPassword
 
     try:
@@ -294,7 +299,7 @@ def request_password_reset(request):
 
     #make sure user exists
     try:
-        user_count = Users.objects.filter(email=email).count()
+        user_count = User.objects.filter(email=email).count()
         if user_count != 1:
             return HttpResponse("unable to find user CHANGE THIS", status=200)
     except:
@@ -364,18 +369,12 @@ def browse_restaurants(request):
         payload = json.loads(request.body)
         city = payload["city"]
         date = payload["date"]
-        seats = payload["seats"]
+        seats = int(payload["seats"])
         cuisine = payload["cuisine"]
-    except:
-        return HttpResponse("missing/blank email or password", status=401)
-    
-    response = {
-        "rest1": {"times": ["5:45", "6:45", "7:45"], "price": "$$", "distance": "20", "cuisine": "Mexican"},
-        "rest2": {"times": ["5:50", "6:30"], "distance": "5", "cuisine": "Italian"},
-        "rest3": {"times": ["6:55", "7:15", "7:30", "7:45", "8:00"]},
-        "rest4": {"times": ["6:55", "7:15", "7:30", "7:45", "8:00"], "price": "$$$"},
-    }
-    return JsonResponse(response)
+        data = get_restaurant_info(city, date, seats)
+        return JsonResponse(data)
+    except Exception as e:
+        return HttpResponse(e, status=401)
 
 @csrf_exempt
 def add_review(request):
@@ -383,17 +382,18 @@ def add_review(request):
     Recieves: request, the review to add
     Returns: httpresponse showing success state
     """
-    try:
-        payload = json.loads(request.body)
-        user = request.session["email"]
-        restaurant = payload["restaurant"]
-        rating = payload["rating"]
-        content = payload["content"]
-        review = Reviews(user=user, restaurant=restaurant, rating=int(rating), content=content)
-        review.save()
-        return HttpResponse("successfully added review", status=200)
-    except:
-        return HttpResponse("missing/blank email or password", status=401)
+    
+    # try:
+    payload = json.loads(request.body)
+    user = User.objects.get(email=request.session['email'])
+    restaurant, created = Restaurant.objects.get_or_create(name=payload["restaurant"])
+    rating = payload["rating"]
+    content = payload["content"]
+    review = Review(user=user, restaurant=restaurant, rating=int(rating), content=content)
+    review.save()
+    return HttpResponse("successfully added review", status=200)
+    # except Exception as e:
+    #     return HttpResponse(e.stracktrace(), status=401)
 
 @csrf_exempt
 def my_reviews(request):
@@ -403,10 +403,23 @@ def my_reviews(request):
     """
     if request.method != "POST":
         return HttpResponse("only POST calls accepted", status=404)
+    user = User.objects.get(email=request.session['email'])
+    #input validation
+    try:
+        data = list(Review.objects.filter(user=user).values())  
+        return JsonResponse(data, safe=False)    
+    except Exception as e:
+        return HttpResponse(e, status=401)
+    
+@csrf_exempt
+def get_user_profile(request):
+    if request.method != "POST":
+        return HttpResponse("only POST calls accepted", status=404)
 
     #input validation
     try:
-        email = request.session["email"]
-        return JsonResponse(model_to_dict(Reviews.objects.get(user=email)))
+        user = User.objects.get(email=request.session["email"])
+        return JsonResponse(to_dict(UserProfile.objects.get(user=user)))
     except Exception as e:
         return HttpResponse(e, status=401)
+

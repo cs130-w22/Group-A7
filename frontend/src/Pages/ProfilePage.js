@@ -14,7 +14,7 @@ export default class ProfilePage extends Component {
   componentDidMount() {
     axios({
       method: "post",
-      url: "http://localhost:8000/getProfile/",
+      url: "http://localhost:8000/getUserProfile/",
       headers: {
         "Content-Type": "text/plain",
         "X-CSRFToken": Cookies.get("XSRF-TOKEN"),
