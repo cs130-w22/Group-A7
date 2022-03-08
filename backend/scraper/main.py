@@ -13,7 +13,6 @@ class Scraper:
     # scrape restaurant names and reservation times for given search parameters from exploretock.com and resy.com
     def scrape_restaurant_info(self, city, date, size, hhtime=None, cuisine=None):
         """
-        Method to
         Receives: restaurant reservation query parameters - city, date, size, time in HH format (optional),
         cuisine (optional)
         Returns: Void; stores reservation times, hyperlinks, and descriptive tags for discovered restaurants
@@ -93,7 +92,6 @@ class Scraper:
     # get reservation times
     def get_restaurant_times(self):
         """
-        Method to
         Receives: No parameters
         Returns: Available reservation times
         """
@@ -102,7 +100,6 @@ class Scraper:
     # get restaurant tags
     def get_restaurant_tags(self):
         """
-        Method to
         Receives: No parameters
         Returns: Restaurant descriptive tags
         """
@@ -111,7 +108,6 @@ class Scraper:
     # get restaurant hyperlinks
     def get_restaurant_hyperlinks(self):
         """
-        Method to
         Receives: No parameters
         Returns: Hyperlinks to restaurants
         """
