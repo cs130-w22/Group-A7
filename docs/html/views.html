@@ -1,0 +1,1215 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.10.0" />
+<title>views API documentation</title>
+<meta name="description" content="" />
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/typography.min.css" integrity="sha256-7l/o7C8jubJiy74VsKTidCy1yBkRtiUGbVkYBylBqUg=" crossorigin>
+<link rel="stylesheet preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/github.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js" integrity="sha256-Uv3H6lx7dJmRfRvH8TH6kJD1TSK1aFcwgx+mdg3epi8=" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => hljs.initHighlighting())</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>views</code></h1>
+</header>
+<section id="section-intro">
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">from calendar import c
+from re import A
+from django.shortcuts import render
+from django.http import HttpResponse, JsonResponse
+from secrets import token_bytes
+import hmac
+import hashlib
+import string
+import time
+import json
+import random
+from django.views.decorators.csrf import csrf_exempt
+from django.core import serializers
+from django.forms.models import model_to_dict
+from datetime import date
+
+#from scraper.main import Scraper
+
+
+#from dinesmart.models import User, UserAuthTokens, PasswordReset, Review, Restaurant, UserProfile, to_dict
+
+# Create your views here.
+
+@csrf_exempt
+def create_user(request):
+    &#34;&#34;&#34;Method to create a user instance with an email and a password
+    Recieves: request, a payload with user information
+    Returns: an http respoinse to display describing the success or failure to create a user
+
+    &#34;&#34;&#34;
+    #only accept post requests
+    if request.method != &#34;POST&#34;:
+        return HttpResponse(&#34;only POST calls accepted&#34;, status=404)
+
+    #input validation
+    try:
+        payload = json.loads(request.body)
+        email = payload[&#34;email&#34;]
+        password = payload[&#34;password&#34;]
+        name = payload[&#34;name&#34;]
+        location = payload[&#34;location&#34;]
+    except:
+        return HttpResponse(&#34;missing/blank email or password&#34;, status=401)
+
+    if (email == &#34;&#34; or password == &#34;&#34;):
+        return HttpResponse(&#34;missing/blank email or password&#34;, status=401)
+
+    # make sure email isn&#39;t already taken
+    try:
+        user_count = User.objects.filter(email=email).count() 
+        if user_count != 0:
+            return HttpResponse(&#34;email already in use&#34;, status=406)
+    except Exception as e:
+        return HttpResponse(e, status=401)
+
+    hashed_password = hash_password(password)
+
+    # save user in database
+    user = User(email=email, password=hashed_password)
+    profile = UserProfile(user=user, name=name, location=location)
+    try:
+        user.save()
+        profile.save()
+        #create authentication token for session
+        token = createAuthToken(email)
+
+        request.session[&#39;email&#39;] = email
+        request.session[&#39;token&#39;] = str(token)
+        request.session.set_expiry(3600) #session expires in 3600 seconds = 1 hour
+        return HttpResponse(&#34;user succesfully created&#34;, status=201)
+    except:
+        return HttpResponse(&#34;error saving user&#34;, status=401)
+
+@csrf_exempt
+def login(request):
+    &#34;&#34;&#34;Method to login a user by validating or invalidating their given info
+    Recieves: request, a payload with theoretically correct login info
+    Returns: an http respoinse to display describing the success or failure to login a particular user
+
+    &#34;&#34;&#34;
+    #only accept post requests
+    if request.method != &#34;POST&#34;:
+        return HttpResponse(&#34;only POST calls accepted&#34;, status=404)
+
+    #input validation
+    try:
+        payload = json.loads(request.body)
+        email = payload[&#39;email&#39;]
+        password = payload[&#39;password&#39;]
+    except:
+        return HttpResponse(&#34;missing/blank email or password&#34;, status=401)
+
+    #hash password
+    hashed_password = hash_password(password)
+
+    #make sure user exists
+    try:
+        user = User.objects.get(email=email, password=hashed_password)
+    except:
+        return HttpResponse(&#34;unable to find user&#34;, status=404)
+
+    #create authentication token for session
+    token = createAuthToken(email)
+
+    request.session[&#39;email&#39;] = email
+    request.session[&#39;token&#39;] = str(token)
+    request.session.set_expiry(1800) #session expires in 1800 seconds = 0.5 hour
+
+    return HttpResponse(&#34;login successful&#34;, status=200)
+
+def hash_password(password):
+    &#34;&#34;&#34;Method to hash a given password for encryption purposes
+    Recieves: password, a password to hash
+    Returns: hash_password a password that has been hashed
+
+    &#34;&#34;&#34;
+    key = &#39;b\&#39;\\xd3\\xf4\\xb7X\\xbd\\x07&#34;\\xf4a\\\&#39;\\xf5\\x16\\xd7a\\xa4\\xbd\\xf0\\xe7\\x10\\xdeR\\x0el\\xc2fW\\x80\\xfd\\xd39\\x953\&#39;&#39;
+    passwordbytes = bytes(password, &#39;utf-8&#39;)
+    keybytes = bytes(key, &#39;utf-8&#39;)
+
+    h = hmac.new( keybytes, passwordbytes, hashlib.sha256 )
+    hashed_password = str(h.hexdigest())
+    return hashed_password
+
+#this function is just used as a test to make sure the session authentication is working
+@csrf_exempt
+def auth_test(request):
+    &#34;&#34;&#34;Method to test session authentication
+    Recieves: request, the request paylod
+    Returns: http response to validate or invalidate authorization
+    &#34;&#34;&#34;
+    try:
+        if checkAuthToken(request.session[&#39;email&#39;], request.session[&#39;token&#39;]):
+            return HttpResponse(&#34;authenticated&#34;, status=200)
+    except:
+        return HttpResponse(&#34;not authenticated&#34;, status=404)
+
+    return HttpResponse(&#34;not authenticated&#34;, status=404)
+
+#checks that the user&#39;s session is authenticated
+def checkAuthToken(request):
+    &#34;&#34;&#34;Method to validate a users session
+    Recieves: request, the info to check against an authtoken
+    Returns: boolean representing a validated or invalidated authentication request
+    &#34;&#34;&#34;
+    try:
+        email = request.session[&#39;email&#39;] 
+        token = request.session[&#39;token&#39;]
+        #get the most recent token entry in the database for the user
+        userAndToken = UserAuthTokens.objects.filter(email=email).order_by(&#39;-timestamp&#39;)[0]
+        
+        tokenbytes = bytes(userAndToken.token, &#39;utf-8&#39;)
+
+        #uses the same key as the createAuthToken method
+        key = &#39;b\&#39;\\xd3\\xf4\\xb7X\\xbd\\x07&#34;\\xf4a\\\&#39;\\xf5\\x16\\xd7a\\xa4\\xbd\\xf0\\xe7\\x10\\xdeR\\x0el\\xc2fW\\x80\\xfd\\xd39\\x953\&#39;&#39;
+        keybytes = bytes(key, &#39;utf-8&#39;)
+        h = hmac.new( keybytes, tokenbytes, hashlib.sha256 )
+        hashedToken = h.hexdigest()
+
+        # compare_digest used to secure against timing attacks
+        return True if hmac.compare_digest(token, str(hashedToken)) else False
+    except Exception:
+        return False
+
+#creates the authentication token for sessions
+def createAuthToken(email):
+    &#34;&#34;&#34;Method to create the authentication token for an email
+    Recieves: email, the email for which to create the authentication token
+    Returns: hashedToken, the token corresponding to the given email but hashed for encryption
+    &#34;&#34;&#34;
+    #create secure 32 byte token
+    token = str(token_bytes(32))
+    userAndToken = UserAuthTokens(email=email, token=token, timestamp=time.time())
+    
+    #save token in database for comparison
+    userAndToken.save()
+
+    #key generated using secrets.token_bytes(32)
+    #32 byte key for encryption
+    key = &#39;b\&#39;\\xd3\\xf4\\xb7X\\xbd\\x07&#34;\\xf4a\\\&#39;\\xf5\\x16\\xd7a\\xa4\\xbd\\xf0\\xe7\\x10\\xdeR\\x0el\\xc2fW\\x80\\xfd\\xd39\\x953\&#39;&#39;
+    tokenbytes = bytes(token, &#39;utf-8&#39;)
+    keybytes = bytes(key, &#39;utf-8&#39;)
+
+    h = hmac.new( keybytes, tokenbytes, hashlib.sha256 )
+    hashedToken = h.hexdigest()
+
+    return hashedToken
+
+@csrf_exempt
+def logout(request):
+    &#34;&#34;&#34;Method to logout a particular user
+    Recieves: request, the payload describing user intent to logout
+    Returns: http response showing the success or failure of a user to logout
+    &#34;&#34;&#34;
+    #only accept post requests
+    if request.method != &#34;POST&#34;:
+        return HttpResponse(&#34;only POST calls accepted&#34;, status=404)
+    
+    #only accept requests from users with a logged in, authenticated session
+    if not checkAuthToken(request):
+        return HttpResponse(&#34;user not authorized&#34;, status=401)
+
+    try:
+        del request.session[&#39;email&#39;]
+        del request.session[&#39;token&#39;]
+        return HttpResponse(&#34;success&#34;, status=200)
+    except:
+        return HttpResponse(&#34;error&#34;, status=404)
+
+@csrf_exempt
+def get_current_user(request):
+    &#34;&#34;&#34;Method to get the user that is currently logged in
+    Recieves: request, the payload to validate whether a particular user is logged in
+    Returns: httprespone validating or invalidating the logged in state of a user
+    &#34;&#34;&#34;
+    #only accept post requests
+    if request.method != &#34;POST&#34;:
+        return HttpResponse(&#34;only POST calls accepted&#34;, status=404)
+    
+    #only accept requests from users with a logged in, authenticated session
+    if not checkAuthToken(request):
+        return HttpResponse(&#34;user not authorized&#34;, status=401)
+
+    try:
+        email = request.session[&#39;email&#39;]
+        return HttpResponse(email, status=200)
+    except:
+        return HttpResponse(&#34;unable to get current user&#34;, status=404)
+
+@csrf_exempt
+def reset_password(request):
+    &#34;&#34;&#34;Method to reset the password for a user
+    Recieves: request, payload containing reset information
+    Returns: httpresponse describing reset success
+    &#34;&#34;&#34;
+    #only accept post requests
+    if request.method != &#34;POST&#34;:
+        return HttpResponse(&#34;only POST calls accepted&#34;, status=404)
+    
+    #input validation
+    try:
+        payload = json.loads(request.body)
+        email = payload[&#39;email&#39;]
+        password = payload[&#39;password&#39;]
+        token = payload[&#39;token&#39;]
+    except:
+        return HttpResponse(&#34;missing/blank email or token&#34;, status=401)
+
+    #get the token from the database
+    try:
+        userAndToken = PasswordReset.objects.filter(email=email).filter(resetToken=token)[0]
+    except:
+        return HttpResponse(&#34;invalid token&#34;, status=401)
+    
+    #if token does not equal our database&#39;s token, reject
+    if userAndToken.resetToken != token:
+        return HttpResponse(&#34;invalid token&#34;, status=401)
+    
+    #check if token is expired or not
+    if float(userAndToken.timestamp) &lt; time.time():
+        return HttpResponse(&#34;token expired&#34;, status=401)
+
+    #delete token after it is used
+    userAndToken.delete()
+
+
+    #hash password
+    key = &#39;b\&#39;\\xd3\\xf4\\xb7X\\xbd\\x07&#34;\\xf4a\\\&#39;\\xf5\\x16\\xd7a\\xa4\\xbd\\xf0\\xe7\\x10\\xdeR\\x0el\\xc2fW\\x80\\xfd\\xd39\\x953\&#39;&#39;
+    passwordbytes = bytes(password, &#39;utf-8&#39;)
+    keybytes = bytes(key, &#39;utf-8&#39;)
+
+    h = hmac.new( keybytes, passwordbytes, hashlib.sha256 )
+    hashedPassword = str(h.hexdigest())
+    
+    #save user in database
+    user = User.objects.get(email=email)
+    user.password = hashedPassword
+
+    try:
+        user.save()
+        return HttpResponse(&#34;password succesfully updated&#34;, status=201)
+    except:
+        return HttpResponse(&#34;error saving user&#34;, status=401)
+
+
+@csrf_exempt
+def request_password_reset(request):
+    &#34;&#34;&#34;Method to request the reset of a password
+    Recieves: request, payload for which to create a reset password request
+    Returns: http response decribing success or failure of reste request
+    &#34;&#34;&#34;
+    #only accept post requests
+    if request.method != &#34;POST&#34;:
+        return HttpResponse(&#34;only POST calls accepted&#34;, status=404)
+    
+    try:
+        payload = json.loads(request.body)
+        email = payload[&#39;email&#39;]
+    except:
+        return HttpResponse(&#34;missing/blank email&#34;, status=401)
+
+    #make sure user exists
+    try:
+        user_count = User.objects.filter(email=email).count()
+        if user_count != 1:
+            return HttpResponse(&#34;unable to find user CHANGE THIS&#34;, status=200)
+    except:
+        return HttpResponse(&#34;unable to find user CHANGE THIS&#34;, status=200)
+
+    #create secure token that is 20 chars long
+    token = randStr(N=20)
+    #this token will only be valid for 10 minutes
+    passwordResetToken = PasswordReset(email=email, resetToken=token, timestamp=time.time() + 600)
+    
+    #save token in database for comparison
+    passwordResetToken.save()
+    
+    sendResetEmail(email, token)
+    return HttpResponse(&#34;email sent, token: &#34; + token, status=200)
+
+
+#sends a reset email given a token and an email
+def sendResetEmail(email, token):
+    &#34;&#34;&#34;Method to send the email to reset password
+    Recieves: email, email to send ti; token, authorization token for password reset
+    Returns: nothing
+    &#34;&#34;&#34;
+    import smtplib, ssl
+
+    port = 465  # For SSL
+
+    smtp_server = &#34;smtp.gmail.com&#34;
+    sender_email = &#34;dinesmart@gmail.com&#34; 
+    password = &#34;Dinesmart1$&#34;
+
+    receiver_email = email 
+
+    #will have to change this upon deployment
+    link = &#34;localhost:8000/passwordResetPage?token=&#34; + token
+  
+    subject = &#34;DineSmart Password Reset&#34;
+    text = &#34;Hello, \n\nIf you are recieving this email, a password reset request has been sent for your account at DineSmart. Follow the link to reset your password.\n\n{link}\n\nBest,\DineSmart  &#34;
+    text = text.format(link=link)
+    message = &#39;Subject: {}\n\n{}&#39;.format(subject, text)
+
+    context = ssl.create_default_context()
+    with smtplib.SMTP_SSL(smtp_server, port, context=context) as server:
+        server.login(sender_email, password)
+        server.sendmail(sender_email, receiver_email, message)
+        server.quit()
+
+# returns a randomly generated token of length N
+def randStr(chars = string.ascii_uppercase + string.ascii_lowercase + string.digits, N=10):
+    &#34;&#34;&#34;Method to randomly generate a token
+    Recieves: chars, characters on can use; N length of string
+    Returns: nothing
+    &#34;&#34;&#34;
+    return &#39;&#39;.join(random.choice(chars) for _ in range(N))
+
+@csrf_exempt
+def browse_restaurants(request):
+    &#34;&#34;&#34;Method to send the email to reset password
+    Recieves: email, email to send ti; token, authorization token for password reset
+    Returns: nothing
+    &#34;&#34;&#34;
+    if request.method != &#34;POST&#34;:
+        return HttpResponse(&#34;only POST calls accepted&#34;, status=404)
+
+    #input validation
+    try:
+        payload = json.loads(request.body)
+        city = payload[&#34;city&#34;]
+        date = payload[&#34;date&#34;]
+        seats = int(payload[&#34;seats&#34;])
+        cuisine = payload.get(&#34;cuisine&#34;, None)
+        time = payload.get(&#34;time&#34;, None)
+
+        scraper = Scraper()
+        scraper.scrape_restaurant_info(city, date, seats, time)
+
+        times = scraper.get_restaurant_times()
+        tags = scraper.get_restaurant_tags()
+        links = scraper.get_restaurant_hyperlinks()
+
+        data = {key: {&#34;times&#34;: times[key], &#34;tag&#34;: tags[key], &#34;link&#34;: links[key]} for key in times}
+
+        return JsonResponse(data, safe=False)
+    except Exception as e:
+        return HttpResponse(e, status=401)
+
+@csrf_exempt
+def add_review(request):
+    &#34;&#34;&#34;Method to add a review
+    Recieves: request, the request with payload to add
+    Returns: httpresponse showing success or error
+    &#34;&#34;&#34;
+    try:
+        payload = json.loads(request.body)
+        user = User.objects.get(email=request.session[&#39;email&#39;])
+        restaurant, created = Restaurant.objects.get_or_create(name=payload[&#34;restaurant&#34;])
+        rating = payload[&#34;rating&#34;]
+        content = payload[&#34;content&#34;]
+        review = Review(user=user, restaurant=restaurant, rating=int(rating), content=content)
+        review.save()
+        return HttpResponse(&#34;successfully added review&#34;, status=200)
+    except Exception as e:
+        return HttpResponse(e.stracktrace(), status=401)
+
+@csrf_exempt
+def my_reviews(request):
+    &#34;&#34;&#34;Method to see a user&#39;s reviews
+    Recieves: request, the request to get your reviews
+    Returns: httpresponse showing reviews
+    &#34;&#34;&#34;
+    if request.method != &#34;POST&#34;:
+        return HttpResponse(&#34;only POST calls accepted&#34;, status=404)
+    user = User.objects.get(email=request.session[&#39;email&#39;])
+    try:
+        data = list(Review.objects.filter(user=user).values())  
+        return JsonResponse(data, safe=False)    
+    except Exception as e:
+        return HttpResponse(e, status=401)
+    
+@csrf_exempt
+def get_restaurant_by_id(request):
+    &#34;&#34;&#34;Method to get a restaurant given an id
+    Recieves: request, relevant id
+    Returns: httpresponse showing restaurant
+    &#34;&#34;&#34;
+    if request.method != &#34;POST&#34;:
+        return HttpResponse(&#34;only POST calls accepted&#34;, status=404)
+    try:
+        payload = json.loads(request.body)
+        id = payload[&#34;id&#34;]        
+        return JsonResponse(to_dict(Restaurant.objects.get(id=id)))  
+    except Exception as e:
+        return HttpResponse(e, status=401)   
+
+@csrf_exempt
+def get_user_profile(request):
+    &#34;&#34;&#34;Method to get a user
+    Recieves: request, relevant email
+    Returns: httpresponse showing user
+    &#34;&#34;&#34;
+    if request.method != &#34;POST&#34;:
+        return HttpResponse(&#34;only POST calls accepted&#34;, status=404)
+
+    #input validation
+    try:
+        user = User.objects.get(email=request.session[&#34;email&#34;])
+        return JsonResponse(to_dict(UserProfile.objects.get(user=user)))
+    except Exception as e:
+        return HttpResponse(e, status=401)
+
+@csrf_exempt
+def get_reviews_by_restaurant(request):
+    &#34;&#34;&#34;Method to get a reviews for a certain restaurant
+    Recieves: request, relevant restaurant
+    Returns: httpresponse showing reviews
+    &#34;&#34;&#34;
+    if request.method != &#34;POST&#34;:
+        return HttpResponse(&#34;only POST calls accepted&#34;, status=404)
+
+    try:
+        payload = json.loads(request.body)
+        restaurant = payload[&#34;restaurant&#34;]
+    except Exception as e:
+        return HttpResponse(e, status=401)
+
+    #input validation
+    try:
+        data = list(Review.objects.filter(restaurant=Restaurant.objects.get(name=restaurant)).values())  
+        return JsonResponse(data, safe=False)    
+    except Exception as e:
+        return HttpResponse(e, status=401)</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-functions">Functions</h2>
+<dl>
+<dt id="views.add_review"><code class="name flex">
+<span>def <span class="ident">add_review</span></span>(<span>request)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Method to add a review
+Recieves: request, the request with payload to add
+Returns: httpresponse showing success or error</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@csrf_exempt
+def add_review(request):
+    &#34;&#34;&#34;Method to add a review
+    Recieves: request, the request with payload to add
+    Returns: httpresponse showing success or error
+    &#34;&#34;&#34;
+    try:
+        payload = json.loads(request.body)
+        user = User.objects.get(email=request.session[&#39;email&#39;])
+        restaurant, created = Restaurant.objects.get_or_create(name=payload[&#34;restaurant&#34;])
+        rating = payload[&#34;rating&#34;]
+        content = payload[&#34;content&#34;]
+        review = Review(user=user, restaurant=restaurant, rating=int(rating), content=content)
+        review.save()
+        return HttpResponse(&#34;successfully added review&#34;, status=200)
+    except Exception as e:
+        return HttpResponse(e.stracktrace(), status=401)</code></pre>
+</details>
+</dd>
+<dt id="views.auth_test"><code class="name flex">
+<span>def <span class="ident">auth_test</span></span>(<span>request)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Method to test session authentication
+Recieves: request, the request paylod
+Returns: http response to validate or invalidate authorization</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@csrf_exempt
+def auth_test(request):
+    &#34;&#34;&#34;Method to test session authentication
+    Recieves: request, the request paylod
+    Returns: http response to validate or invalidate authorization
+    &#34;&#34;&#34;
+    try:
+        if checkAuthToken(request.session[&#39;email&#39;], request.session[&#39;token&#39;]):
+            return HttpResponse(&#34;authenticated&#34;, status=200)
+    except:
+        return HttpResponse(&#34;not authenticated&#34;, status=404)
+
+    return HttpResponse(&#34;not authenticated&#34;, status=404)</code></pre>
+</details>
+</dd>
+<dt id="views.browse_restaurants"><code class="name flex">
+<span>def <span class="ident">browse_restaurants</span></span>(<span>request)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Method to send the email to reset password
+Recieves: email, email to send ti; token, authorization token for password reset
+Returns: nothing</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@csrf_exempt
+def browse_restaurants(request):
+    &#34;&#34;&#34;Method to send the email to reset password
+    Recieves: email, email to send ti; token, authorization token for password reset
+    Returns: nothing
+    &#34;&#34;&#34;
+    if request.method != &#34;POST&#34;:
+        return HttpResponse(&#34;only POST calls accepted&#34;, status=404)
+
+    #input validation
+    try:
+        payload = json.loads(request.body)
+        city = payload[&#34;city&#34;]
+        date = payload[&#34;date&#34;]
+        seats = int(payload[&#34;seats&#34;])
+        cuisine = payload.get(&#34;cuisine&#34;, None)
+        time = payload.get(&#34;time&#34;, None)
+
+        scraper = Scraper()
+        scraper.scrape_restaurant_info(city, date, seats, time)
+
+        times = scraper.get_restaurant_times()
+        tags = scraper.get_restaurant_tags()
+        links = scraper.get_restaurant_hyperlinks()
+
+        data = {key: {&#34;times&#34;: times[key], &#34;tag&#34;: tags[key], &#34;link&#34;: links[key]} for key in times}
+
+        return JsonResponse(data, safe=False)
+    except Exception as e:
+        return HttpResponse(e, status=401)</code></pre>
+</details>
+</dd>
+<dt id="views.checkAuthToken"><code class="name flex">
+<span>def <span class="ident">checkAuthToken</span></span>(<span>request)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Method to validate a users session
+Recieves: request, the info to check against an authtoken
+Returns: boolean representing a validated or invalidated authentication request</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def checkAuthToken(request):
+    &#34;&#34;&#34;Method to validate a users session
+    Recieves: request, the info to check against an authtoken
+    Returns: boolean representing a validated or invalidated authentication request
+    &#34;&#34;&#34;
+    try:
+        email = request.session[&#39;email&#39;] 
+        token = request.session[&#39;token&#39;]
+        #get the most recent token entry in the database for the user
+        userAndToken = UserAuthTokens.objects.filter(email=email).order_by(&#39;-timestamp&#39;)[0]
+        
+        tokenbytes = bytes(userAndToken.token, &#39;utf-8&#39;)
+
+        #uses the same key as the createAuthToken method
+        key = &#39;b\&#39;\\xd3\\xf4\\xb7X\\xbd\\x07&#34;\\xf4a\\\&#39;\\xf5\\x16\\xd7a\\xa4\\xbd\\xf0\\xe7\\x10\\xdeR\\x0el\\xc2fW\\x80\\xfd\\xd39\\x953\&#39;&#39;
+        keybytes = bytes(key, &#39;utf-8&#39;)
+        h = hmac.new( keybytes, tokenbytes, hashlib.sha256 )
+        hashedToken = h.hexdigest()
+
+        # compare_digest used to secure against timing attacks
+        return True if hmac.compare_digest(token, str(hashedToken)) else False
+    except Exception:
+        return False</code></pre>
+</details>
+</dd>
+<dt id="views.createAuthToken"><code class="name flex">
+<span>def <span class="ident">createAuthToken</span></span>(<span>email)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Method to create the authentication token for an email
+Recieves: email, the email for which to create the authentication token
+Returns: hashedToken, the token corresponding to the given email but hashed for encryption</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def createAuthToken(email):
+    &#34;&#34;&#34;Method to create the authentication token for an email
+    Recieves: email, the email for which to create the authentication token
+    Returns: hashedToken, the token corresponding to the given email but hashed for encryption
+    &#34;&#34;&#34;
+    #create secure 32 byte token
+    token = str(token_bytes(32))
+    userAndToken = UserAuthTokens(email=email, token=token, timestamp=time.time())
+    
+    #save token in database for comparison
+    userAndToken.save()
+
+    #key generated using secrets.token_bytes(32)
+    #32 byte key for encryption
+    key = &#39;b\&#39;\\xd3\\xf4\\xb7X\\xbd\\x07&#34;\\xf4a\\\&#39;\\xf5\\x16\\xd7a\\xa4\\xbd\\xf0\\xe7\\x10\\xdeR\\x0el\\xc2fW\\x80\\xfd\\xd39\\x953\&#39;&#39;
+    tokenbytes = bytes(token, &#39;utf-8&#39;)
+    keybytes = bytes(key, &#39;utf-8&#39;)
+
+    h = hmac.new( keybytes, tokenbytes, hashlib.sha256 )
+    hashedToken = h.hexdigest()
+
+    return hashedToken</code></pre>
+</details>
+</dd>
+<dt id="views.create_user"><code class="name flex">
+<span>def <span class="ident">create_user</span></span>(<span>request)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Method to create a user instance with an email and a password
+Recieves: request, a payload with user information
+Returns: an http respoinse to display describing the success or failure to create a user</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@csrf_exempt
+def create_user(request):
+    &#34;&#34;&#34;Method to create a user instance with an email and a password
+    Recieves: request, a payload with user information
+    Returns: an http respoinse to display describing the success or failure to create a user
+
+    &#34;&#34;&#34;
+    #only accept post requests
+    if request.method != &#34;POST&#34;:
+        return HttpResponse(&#34;only POST calls accepted&#34;, status=404)
+
+    #input validation
+    try:
+        payload = json.loads(request.body)
+        email = payload[&#34;email&#34;]
+        password = payload[&#34;password&#34;]
+        name = payload[&#34;name&#34;]
+        location = payload[&#34;location&#34;]
+    except:
+        return HttpResponse(&#34;missing/blank email or password&#34;, status=401)
+
+    if (email == &#34;&#34; or password == &#34;&#34;):
+        return HttpResponse(&#34;missing/blank email or password&#34;, status=401)
+
+    # make sure email isn&#39;t already taken
+    try:
+        user_count = User.objects.filter(email=email).count() 
+        if user_count != 0:
+            return HttpResponse(&#34;email already in use&#34;, status=406)
+    except Exception as e:
+        return HttpResponse(e, status=401)
+
+    hashed_password = hash_password(password)
+
+    # save user in database
+    user = User(email=email, password=hashed_password)
+    profile = UserProfile(user=user, name=name, location=location)
+    try:
+        user.save()
+        profile.save()
+        #create authentication token for session
+        token = createAuthToken(email)
+
+        request.session[&#39;email&#39;] = email
+        request.session[&#39;token&#39;] = str(token)
+        request.session.set_expiry(3600) #session expires in 3600 seconds = 1 hour
+        return HttpResponse(&#34;user succesfully created&#34;, status=201)
+    except:
+        return HttpResponse(&#34;error saving user&#34;, status=401)</code></pre>
+</details>
+</dd>
+<dt id="views.get_current_user"><code class="name flex">
+<span>def <span class="ident">get_current_user</span></span>(<span>request)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Method to get the user that is currently logged in
+Recieves: request, the payload to validate whether a particular user is logged in
+Returns: httprespone validating or invalidating the logged in state of a user</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@csrf_exempt
+def get_current_user(request):
+    &#34;&#34;&#34;Method to get the user that is currently logged in
+    Recieves: request, the payload to validate whether a particular user is logged in
+    Returns: httprespone validating or invalidating the logged in state of a user
+    &#34;&#34;&#34;
+    #only accept post requests
+    if request.method != &#34;POST&#34;:
+        return HttpResponse(&#34;only POST calls accepted&#34;, status=404)
+    
+    #only accept requests from users with a logged in, authenticated session
+    if not checkAuthToken(request):
+        return HttpResponse(&#34;user not authorized&#34;, status=401)
+
+    try:
+        email = request.session[&#39;email&#39;]
+        return HttpResponse(email, status=200)
+    except:
+        return HttpResponse(&#34;unable to get current user&#34;, status=404)</code></pre>
+</details>
+</dd>
+<dt id="views.get_restaurant_by_id"><code class="name flex">
+<span>def <span class="ident">get_restaurant_by_id</span></span>(<span>request)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Method to get a restaurant given an id
+Recieves: request, relevant id
+Returns: httpresponse showing restaurant</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@csrf_exempt
+def get_restaurant_by_id(request):
+    &#34;&#34;&#34;Method to get a restaurant given an id
+    Recieves: request, relevant id
+    Returns: httpresponse showing restaurant
+    &#34;&#34;&#34;
+    if request.method != &#34;POST&#34;:
+        return HttpResponse(&#34;only POST calls accepted&#34;, status=404)
+    try:
+        payload = json.loads(request.body)
+        id = payload[&#34;id&#34;]        
+        return JsonResponse(to_dict(Restaurant.objects.get(id=id)))  
+    except Exception as e:
+        return HttpResponse(e, status=401)   </code></pre>
+</details>
+</dd>
+<dt id="views.get_reviews_by_restaurant"><code class="name flex">
+<span>def <span class="ident">get_reviews_by_restaurant</span></span>(<span>request)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Method to get a reviews for a certain restaurant
+Recieves: request, relevant restaurant
+Returns: httpresponse showing reviews</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@csrf_exempt
+def get_reviews_by_restaurant(request):
+    &#34;&#34;&#34;Method to get a reviews for a certain restaurant
+    Recieves: request, relevant restaurant
+    Returns: httpresponse showing reviews
+    &#34;&#34;&#34;
+    if request.method != &#34;POST&#34;:
+        return HttpResponse(&#34;only POST calls accepted&#34;, status=404)
+
+    try:
+        payload = json.loads(request.body)
+        restaurant = payload[&#34;restaurant&#34;]
+    except Exception as e:
+        return HttpResponse(e, status=401)
+
+    #input validation
+    try:
+        data = list(Review.objects.filter(restaurant=Restaurant.objects.get(name=restaurant)).values())  
+        return JsonResponse(data, safe=False)    
+    except Exception as e:
+        return HttpResponse(e, status=401)</code></pre>
+</details>
+</dd>
+<dt id="views.get_user_profile"><code class="name flex">
+<span>def <span class="ident">get_user_profile</span></span>(<span>request)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Method to get a user
+Recieves: request, relevant email
+Returns: httpresponse showing user</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@csrf_exempt
+def get_user_profile(request):
+    &#34;&#34;&#34;Method to get a user
+    Recieves: request, relevant email
+    Returns: httpresponse showing user
+    &#34;&#34;&#34;
+    if request.method != &#34;POST&#34;:
+        return HttpResponse(&#34;only POST calls accepted&#34;, status=404)
+
+    #input validation
+    try:
+        user = User.objects.get(email=request.session[&#34;email&#34;])
+        return JsonResponse(to_dict(UserProfile.objects.get(user=user)))
+    except Exception as e:
+        return HttpResponse(e, status=401)</code></pre>
+</details>
+</dd>
+<dt id="views.hash_password"><code class="name flex">
+<span>def <span class="ident">hash_password</span></span>(<span>password)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Method to hash a given password for encryption purposes
+Recieves: password, a password to hash
+Returns: hash_password a password that has been hashed</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def hash_password(password):
+    &#34;&#34;&#34;Method to hash a given password for encryption purposes
+    Recieves: password, a password to hash
+    Returns: hash_password a password that has been hashed
+
+    &#34;&#34;&#34;
+    key = &#39;b\&#39;\\xd3\\xf4\\xb7X\\xbd\\x07&#34;\\xf4a\\\&#39;\\xf5\\x16\\xd7a\\xa4\\xbd\\xf0\\xe7\\x10\\xdeR\\x0el\\xc2fW\\x80\\xfd\\xd39\\x953\&#39;&#39;
+    passwordbytes = bytes(password, &#39;utf-8&#39;)
+    keybytes = bytes(key, &#39;utf-8&#39;)
+
+    h = hmac.new( keybytes, passwordbytes, hashlib.sha256 )
+    hashed_password = str(h.hexdigest())
+    return hashed_password</code></pre>
+</details>
+</dd>
+<dt id="views.login"><code class="name flex">
+<span>def <span class="ident">login</span></span>(<span>request)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Method to login a user by validating or invalidating their given info
+Recieves: request, a payload with theoretically correct login info
+Returns: an http respoinse to display describing the success or failure to login a particular user</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@csrf_exempt
+def login(request):
+    &#34;&#34;&#34;Method to login a user by validating or invalidating their given info
+    Recieves: request, a payload with theoretically correct login info
+    Returns: an http respoinse to display describing the success or failure to login a particular user
+
+    &#34;&#34;&#34;
+    #only accept post requests
+    if request.method != &#34;POST&#34;:
+        return HttpResponse(&#34;only POST calls accepted&#34;, status=404)
+
+    #input validation
+    try:
+        payload = json.loads(request.body)
+        email = payload[&#39;email&#39;]
+        password = payload[&#39;password&#39;]
+    except:
+        return HttpResponse(&#34;missing/blank email or password&#34;, status=401)
+
+    #hash password
+    hashed_password = hash_password(password)
+
+    #make sure user exists
+    try:
+        user = User.objects.get(email=email, password=hashed_password)
+    except:
+        return HttpResponse(&#34;unable to find user&#34;, status=404)
+
+    #create authentication token for session
+    token = createAuthToken(email)
+
+    request.session[&#39;email&#39;] = email
+    request.session[&#39;token&#39;] = str(token)
+    request.session.set_expiry(1800) #session expires in 1800 seconds = 0.5 hour
+
+    return HttpResponse(&#34;login successful&#34;, status=200)</code></pre>
+</details>
+</dd>
+<dt id="views.logout"><code class="name flex">
+<span>def <span class="ident">logout</span></span>(<span>request)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Method to logout a particular user
+Recieves: request, the payload describing user intent to logout
+Returns: http response showing the success or failure of a user to logout</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@csrf_exempt
+def logout(request):
+    &#34;&#34;&#34;Method to logout a particular user
+    Recieves: request, the payload describing user intent to logout
+    Returns: http response showing the success or failure of a user to logout
+    &#34;&#34;&#34;
+    #only accept post requests
+    if request.method != &#34;POST&#34;:
+        return HttpResponse(&#34;only POST calls accepted&#34;, status=404)
+    
+    #only accept requests from users with a logged in, authenticated session
+    if not checkAuthToken(request):
+        return HttpResponse(&#34;user not authorized&#34;, status=401)
+
+    try:
+        del request.session[&#39;email&#39;]
+        del request.session[&#39;token&#39;]
+        return HttpResponse(&#34;success&#34;, status=200)
+    except:
+        return HttpResponse(&#34;error&#34;, status=404)</code></pre>
+</details>
+</dd>
+<dt id="views.my_reviews"><code class="name flex">
+<span>def <span class="ident">my_reviews</span></span>(<span>request)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Method to see a user's reviews
+Recieves: request, the request to get your reviews
+Returns: httpresponse showing reviews</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@csrf_exempt
+def my_reviews(request):
+    &#34;&#34;&#34;Method to see a user&#39;s reviews
+    Recieves: request, the request to get your reviews
+    Returns: httpresponse showing reviews
+    &#34;&#34;&#34;
+    if request.method != &#34;POST&#34;:
+        return HttpResponse(&#34;only POST calls accepted&#34;, status=404)
+    user = User.objects.get(email=request.session[&#39;email&#39;])
+    try:
+        data = list(Review.objects.filter(user=user).values())  
+        return JsonResponse(data, safe=False)    
+    except Exception as e:
+        return HttpResponse(e, status=401)</code></pre>
+</details>
+</dd>
+<dt id="views.randStr"><code class="name flex">
+<span>def <span class="ident">randStr</span></span>(<span>chars='ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789', N=10)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Method to randomly generate a token
+Recieves: chars, characters on can use; N length of string
+Returns: nothing</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def randStr(chars = string.ascii_uppercase + string.ascii_lowercase + string.digits, N=10):
+    &#34;&#34;&#34;Method to randomly generate a token
+    Recieves: chars, characters on can use; N length of string
+    Returns: nothing
+    &#34;&#34;&#34;
+    return &#39;&#39;.join(random.choice(chars) for _ in range(N))</code></pre>
+</details>
+</dd>
+<dt id="views.request_password_reset"><code class="name flex">
+<span>def <span class="ident">request_password_reset</span></span>(<span>request)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Method to request the reset of a password
+Recieves: request, payload for which to create a reset password request
+Returns: http response decribing success or failure of reste request</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@csrf_exempt
+def request_password_reset(request):
+    &#34;&#34;&#34;Method to request the reset of a password
+    Recieves: request, payload for which to create a reset password request
+    Returns: http response decribing success or failure of reste request
+    &#34;&#34;&#34;
+    #only accept post requests
+    if request.method != &#34;POST&#34;:
+        return HttpResponse(&#34;only POST calls accepted&#34;, status=404)
+    
+    try:
+        payload = json.loads(request.body)
+        email = payload[&#39;email&#39;]
+    except:
+        return HttpResponse(&#34;missing/blank email&#34;, status=401)
+
+    #make sure user exists
+    try:
+        user_count = User.objects.filter(email=email).count()
+        if user_count != 1:
+            return HttpResponse(&#34;unable to find user CHANGE THIS&#34;, status=200)
+    except:
+        return HttpResponse(&#34;unable to find user CHANGE THIS&#34;, status=200)
+
+    #create secure token that is 20 chars long
+    token = randStr(N=20)
+    #this token will only be valid for 10 minutes
+    passwordResetToken = PasswordReset(email=email, resetToken=token, timestamp=time.time() + 600)
+    
+    #save token in database for comparison
+    passwordResetToken.save()
+    
+    sendResetEmail(email, token)
+    return HttpResponse(&#34;email sent, token: &#34; + token, status=200)</code></pre>
+</details>
+</dd>
+<dt id="views.reset_password"><code class="name flex">
+<span>def <span class="ident">reset_password</span></span>(<span>request)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Method to reset the password for a user
+Recieves: request, payload containing reset information
+Returns: httpresponse describing reset success</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@csrf_exempt
+def reset_password(request):
+    &#34;&#34;&#34;Method to reset the password for a user
+    Recieves: request, payload containing reset information
+    Returns: httpresponse describing reset success
+    &#34;&#34;&#34;
+    #only accept post requests
+    if request.method != &#34;POST&#34;:
+        return HttpResponse(&#34;only POST calls accepted&#34;, status=404)
+    
+    #input validation
+    try:
+        payload = json.loads(request.body)
+        email = payload[&#39;email&#39;]
+        password = payload[&#39;password&#39;]
+        token = payload[&#39;token&#39;]
+    except:
+        return HttpResponse(&#34;missing/blank email or token&#34;, status=401)
+
+    #get the token from the database
+    try:
+        userAndToken = PasswordReset.objects.filter(email=email).filter(resetToken=token)[0]
+    except:
+        return HttpResponse(&#34;invalid token&#34;, status=401)
+    
+    #if token does not equal our database&#39;s token, reject
+    if userAndToken.resetToken != token:
+        return HttpResponse(&#34;invalid token&#34;, status=401)
+    
+    #check if token is expired or not
+    if float(userAndToken.timestamp) &lt; time.time():
+        return HttpResponse(&#34;token expired&#34;, status=401)
+
+    #delete token after it is used
+    userAndToken.delete()
+
+
+    #hash password
+    key = &#39;b\&#39;\\xd3\\xf4\\xb7X\\xbd\\x07&#34;\\xf4a\\\&#39;\\xf5\\x16\\xd7a\\xa4\\xbd\\xf0\\xe7\\x10\\xdeR\\x0el\\xc2fW\\x80\\xfd\\xd39\\x953\&#39;&#39;
+    passwordbytes = bytes(password, &#39;utf-8&#39;)
+    keybytes = bytes(key, &#39;utf-8&#39;)
+
+    h = hmac.new( keybytes, passwordbytes, hashlib.sha256 )
+    hashedPassword = str(h.hexdigest())
+    
+    #save user in database
+    user = User.objects.get(email=email)
+    user.password = hashedPassword
+
+    try:
+        user.save()
+        return HttpResponse(&#34;password succesfully updated&#34;, status=201)
+    except:
+        return HttpResponse(&#34;error saving user&#34;, status=401)</code></pre>
+</details>
+</dd>
+<dt id="views.sendResetEmail"><code class="name flex">
+<span>def <span class="ident">sendResetEmail</span></span>(<span>email, token)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Method to send the email to reset password
+Recieves: email, email to send ti; token, authorization token for password reset
+Returns: nothing</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def sendResetEmail(email, token):
+    &#34;&#34;&#34;Method to send the email to reset password
+    Recieves: email, email to send ti; token, authorization token for password reset
+    Returns: nothing
+    &#34;&#34;&#34;
+    import smtplib, ssl
+
+    port = 465  # For SSL
+
+    smtp_server = &#34;smtp.gmail.com&#34;
+    sender_email = &#34;dinesmart@gmail.com&#34; 
+    password = &#34;Dinesmart1$&#34;
+
+    receiver_email = email 
+
+    #will have to change this upon deployment
+    link = &#34;localhost:8000/passwordResetPage?token=&#34; + token
+  
+    subject = &#34;DineSmart Password Reset&#34;
+    text = &#34;Hello, \n\nIf you are recieving this email, a password reset request has been sent for your account at DineSmart. Follow the link to reset your password.\n\n{link}\n\nBest,\DineSmart  &#34;
+    text = text.format(link=link)
+    message = &#39;Subject: {}\n\n{}&#39;.format(subject, text)
+
+    context = ssl.create_default_context()
+    with smtplib.SMTP_SSL(smtp_server, port, context=context) as server:
+        server.login(sender_email, password)
+        server.sendmail(sender_email, receiver_email, message)
+        server.quit()</code></pre>
+</details>
+</dd>
+</dl>
+</section>
+<section>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3><a href="#header-functions">Functions</a></h3>
+<ul class="">
+<li><code><a title="views.add_review" href="#views.add_review">add_review</a></code></li>
+<li><code><a title="views.auth_test" href="#views.auth_test">auth_test</a></code></li>
+<li><code><a title="views.browse_restaurants" href="#views.browse_restaurants">browse_restaurants</a></code></li>
+<li><code><a title="views.checkAuthToken" href="#views.checkAuthToken">checkAuthToken</a></code></li>
+<li><code><a title="views.createAuthToken" href="#views.createAuthToken">createAuthToken</a></code></li>
+<li><code><a title="views.create_user" href="#views.create_user">create_user</a></code></li>
+<li><code><a title="views.get_current_user" href="#views.get_current_user">get_current_user</a></code></li>
+<li><code><a title="views.get_restaurant_by_id" href="#views.get_restaurant_by_id">get_restaurant_by_id</a></code></li>
+<li><code><a title="views.get_reviews_by_restaurant" href="#views.get_reviews_by_restaurant">get_reviews_by_restaurant</a></code></li>
+<li><code><a title="views.get_user_profile" href="#views.get_user_profile">get_user_profile</a></code></li>
+<li><code><a title="views.hash_password" href="#views.hash_password">hash_password</a></code></li>
+<li><code><a title="views.login" href="#views.login">login</a></code></li>
+<li><code><a title="views.logout" href="#views.logout">logout</a></code></li>
+<li><code><a title="views.my_reviews" href="#views.my_reviews">my_reviews</a></code></li>
+<li><code><a title="views.randStr" href="#views.randStr">randStr</a></code></li>
+<li><code><a title="views.request_password_reset" href="#views.request_password_reset">request_password_reset</a></code></li>
+<li><code><a title="views.reset_password" href="#views.reset_password">reset_password</a></code></li>
+<li><code><a title="views.sendResetEmail" href="#views.sendResetEmail">sendResetEmail</a></code></li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc" title="pdoc: Python API documentation generator"><cite>pdoc</cite> 0.10.0</a>.</p>
+</footer>
+</body>
+</html>

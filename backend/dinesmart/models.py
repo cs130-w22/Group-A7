@@ -11,6 +11,7 @@ class User(models.Model):
     password = models.CharField(max_length=200)
 
 class UserProfile(models.Model):
+    """Class to represent a userprifle with things like their numbers of bookings and how long they've been a member"""
     user = models.OneToOneField(User, on_delete=models.CASCADE, blank=True, null=True)
     name = models.CharField(max_length=50, default="")
     location = models.CharField(max_length=50, default="")
@@ -18,6 +19,7 @@ class UserProfile(models.Model):
     member_since = models.DateField(auto_now_add=True)
 
 class Restaurant(models.Model):
+    """Class to represent a restaurant with its basic info and info about reviews"""
     name = models.CharField(max_length=50)
     location = models.CharField(max_length=50, blank=True, null=True)
     cuisine = models.CharField(max_length=50, blank=True, null=True)
@@ -25,6 +27,7 @@ class Restaurant(models.Model):
     num_reviews = models.IntegerField(default=0)
 
 class Review(models.Model):
+    """class to represent a review with all of its info"""
     user = models.ForeignKey(User, on_delete=models.CASCADE, blank=True, null=True)
     restaurant = models.ForeignKey(Restaurant, on_delete=models.CASCADE, blank=True, null=True)
     rating = models.IntegerField(validators=[MinValueValidator(0),
