@@ -3,6 +3,100 @@
 Our code builds on a push to any branch of our repository. You can monitor the status of the builds in the Actions tab, where you will see two processes: A Node.js process and a Python Package process.
 
 
+# Installation and Local Deployment
+
+## Clone Repository
+
+```
+git clone https://github.com/cs130-w22/Group-A7.git
+```
+
+## Install Requirements
+
+Frontend requirements
+``` 
+cd frontend 
+
+npm install
+
+cd ../backend
+```
+
+OPTIONAL: Activate Virtual Environment: 
+
+```
+python3 -m venv <env-name>
+source <env-name>/bin/activate
+```
+
+Backend Requirements
+```
+pip install -r requirements.txt
+```
+
+## Migrate Database Models
+
+```
+python3 manage.py makemigrations
+python3 manage.py migrate
+```
+
+## Run Backend Server
+ 
+```
+python3 manage.py runserver
+```
+
+## Run Frontend
+ 
+In a new terminal, 
+
+```
+cd ../frontend
+npm start
+```
+
+This should redirect you to a webpage running on the local machine.
+
+
+
+## Youtube Video
+https://youtu.be/IFdGjfOkj-8
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 # Repository Template
 
 [![Build Status](https://travis-ci.org/cs130-w21/template.svg?branch=master)](https://travis-ci.org/cs130-w21/template)
@@ -97,3 +191,62 @@ A repository can also be setup to build continuously whenever a commit is pushed
 The CI/CD script will also be run when a new pull request is created or when more commits are pushed to its linked `issue` branch. Such build assures peer reviewers that the new commits when accepted will not break the build. In fact, a successful CI/CD build can be a prerequisute for peer reviewers to look at the changes.
 
 When a tag is pushed to the `master` branch, the CI/CD script will additionally deliver and/or deploy the built artifact(s). The script can also be configured to create a Github release based on the tag.
+
+# Installation and Local Deployment
+
+## Clone Repository
+
+```
+git clone https://github.com/cs130-w22/Group-A7.git
+```
+
+## Install Requirements
+
+Frontend requirements
+``` 
+cd frontend 
+
+npm install
+
+cd ../backend
+```
+
+OPTIONAL: Activate Virtual Environment: 
+
+```
+python3 -m venv <env-name>
+source <env-name>/bin/activate
+```
+
+Backend Requirements
+```
+pip install -r requirements.txt
+```
+
+## Migrate Database Models
+
+```
+python3 manage.py makemigrations
+python3 manage.py migrate
+```
+
+## Run Backend Server
+ 
+```
+python3 manage.py runserver
+```
+
+## Run Frontend
+ 
+In a new terminal, 
+
+```
+cd ../frontend
+npm start
+```
+
+This should redirect you to a webpage running on the local machine.
+
+## Youtube video
+
+
