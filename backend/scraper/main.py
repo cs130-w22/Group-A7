@@ -9,15 +9,21 @@ class Scraper:
         self.tags = dict()
 
     # scrape restaurant names and reservation times for given search parameters
-    def scrape_restaurant_info(self, city, date, size, gmt=None, cuisine=None):
+    def scrape_restaurant_info(self, city, date, size, hhtime=None, cuisine=None):
+        """
+        Method to
+        Receives: restaurant reservation query parameters - city, date, size, time in HH format (optional),
+        cuisine (optional)
+        Returns: Void; stores reservation times, hyperlinks, and descriptive tags for discovered restaurants
+        """
         # set params and url
         city_spaced = city.title()
         city_hyphened = city.lower().replace(" ", "-")
         url = f"https://www.exploretock.com/city/{city_hyphened}/search?city={city_spaced}&date={date}&size={size}"
 
         url_time = ""
-        if gmt is not None:
-            url_time = f"&time={gmt}"
+        if hhtime is not None:
+            url_time = f"&time={hhtime}"
         url_cuisine = ""
         if cuisine is not None:
             url_cuisine = f"&cuisines={cuisine}"
@@ -73,12 +79,27 @@ class Scraper:
 
     # get reservation times
     def get_restaurant_times(self):
+        """
+        Method to
+        Receives: No parameters
+        Returns: Available reservation times
+        """
         return self.reservations
 
     # get restaurant tags
     def get_restaurant_tags(self):
+        """
+        Method to
+        Receives: No parameters
+        Returns: Restaurant descriptive tags
+        """
         return self.tags
 
     # get restaurant hyperlinks
     def get_restaurant_hyperlinks(self):
+        """
+        Method to
+        Receives: No parameters
+        Returns: Hyperlinks to restaurants
+        """
         return self.hyperlinks

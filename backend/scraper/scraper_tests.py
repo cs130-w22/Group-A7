@@ -24,14 +24,14 @@ def test_invalid_seats():
 
 def test_invalid_time():
     s = Scraper()
-    s.scrape_restaurant_info("Chicago", "2022-03-15", "2", gmt=-1)
+    s.scrape_restaurant_info("Chicago", "2022-03-15", "2", hhtime=-1)
     assert s.get_restaurant_times() == {}
     assert s.get_restaurant_hyperlinks() == {}
     assert s.get_restaurant_tags() == {}
 
 def test_invalid_cuisine():
     s = Scraper()
-    s.scrape_restaurant_info("Chicago", "2022-03-15", "2", gmt=14, cuisine="xyz")
+    s.scrape_restaurant_info("Chicago", "2022-03-15", "2", hhtime=14, cuisine="xyz")
     assert s.get_restaurant_times() == {}
     assert s.get_restaurant_hyperlinks() == {}
     assert s.get_restaurant_tags() == {}
