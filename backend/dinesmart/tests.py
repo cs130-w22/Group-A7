@@ -102,6 +102,32 @@ class UserTestCase(TestCase):
         self.assertEqual(Rev2.content, "I hate it")
         self.assertEqual(Rev3.content, "It's okay")
     
+        r2.delete()
+        try:
+            revtemp1 = Review.objects.get(user=a3, restaurant=r2)
+        except Review.DoesNotExist:
+            revtemp1=None
+
+        self.assertEqual(None,revtemp1)
+
+        a3.delete()
+        try:
+            revtemp2 = Review.objects.get(user=a3, restaurant=r1)
+        except Review.DoesNotExist:
+            revtemp2=None
+        self.assertEqual(None,revtemp2)
+
+    def testPasswordReset(self):
+        #get PasswordResets
+        p2 = PasswordReset.objects.get(email="a2@gmail.com")
+        p3 = PasswordReset.objects.get(email="a3@gmail.com")
+
+        #check values
+        self.assertEqual(p2.resetToken,"tmptoken1")
+        self.assertEqual(p3.resetToken,"tmptoken2")
+        self.assertEqual(p2.timestamp,"12:00:00")
+        self.assertEqual(p3.timestamp,"01:00:00")
+
     def testUserAuth(self):
         #get Users and UserAuthTokens
         a2 = User.objects.get(email="a2@gmail.com")
@@ -117,14 +143,7 @@ class UserTestCase(TestCase):
         self.assertEqual(u2.timestamp,"12:00:00")
         self.assertEqual(u3.timestamp,"01:00:00")
 
-    def testPasswordReset(self):
-        #get PasswordResets
-        p2 = PasswordReset.objects.get(email="a2@gmail.com")
-        p3 = PasswordReset.objects.get(email="a3@gmail.com")
-        self.assertEqual(p2.resetToken,"tmptoken1")
-        self.assertEqual(p3.resetToken,"tmptoken2")
-        self.assertEqual(p2.timestamp,"12:00:00")
-        self.assertEqual(p3.timestamp,"01:00:00")
+
 
 
 
