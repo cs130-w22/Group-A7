@@ -390,6 +390,10 @@ def browse_restaurants(request):
 
 @csrf_exempt
 def add_review(request):
+    """Method to add a review
+    Recieves: request, the request with payload to add
+    Returns: httpresponse showing success or error
+    """
     try:
         payload = json.loads(request.body)
         user = User.objects.get(email=request.session['email'])
@@ -419,6 +423,10 @@ def my_reviews(request):
     
 @csrf_exempt
 def get_restaurant_by_id(request):
+    """Method to get a restaurant given an id
+    Recieves: request, relevant id
+    Returns: httpresponse showing restaurant
+    """
     if request.method != "POST":
         return HttpResponse("only POST calls accepted", status=404)
     try:
@@ -430,6 +438,10 @@ def get_restaurant_by_id(request):
 
 @csrf_exempt
 def get_user_profile(request):
+    """Method to get a user
+    Recieves: request, relevant email
+    Returns: httpresponse showing user
+    """
     if request.method != "POST":
         return HttpResponse("only POST calls accepted", status=404)
 
@@ -442,6 +454,10 @@ def get_user_profile(request):
 
 @csrf_exempt
 def get_reviews_by_restaurant(request):
+    """Method to get a reviews for a certain restaurant
+    Recieves: request, relevant restaurant
+    Returns: httpresponse showing reviews
+    """
     if request.method != "POST":
         return HttpResponse("only POST calls accepted", status=404)
 
