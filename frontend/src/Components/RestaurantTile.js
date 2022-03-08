@@ -6,11 +6,16 @@ export default class RestaurantTile extends Component {
   render() {
     return (
       <Container>
-        <h1>{this.props.restaurant.name}</h1>
-        <h2>{this.props.restaurant.location}</h2>
-        <h2>Price: {this.props.restaurant.price}</h2>
-        <h2>{this.props.restaurant.image_link}</h2>
-        {/* link to book the restaurant */}
+        <h2>{this.props.name}</h2>
+        <h3>{this.props.details.tag}</h3>
+        <h3>Times: {this.props.details.times.join(", ")}</h3>
+        <a
+          target="_blank"
+          rel="noopener noreferrer"
+          href={this.props.details.link}
+        >
+          Make booking here
+        </a>
       </Container>
     );
   }
