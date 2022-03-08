@@ -8,7 +8,7 @@ class Scraper:
         self.hyperlinks = dict()
         self.tags = dict()
 
-    # scrape restaurant names and reservation times for given search parameters
+    # scrape restaurant names and reservation times for given search parameters from exploretock.com
     def scrape_restaurant_info(self, city, date, size, hhtime=None, cuisine=None):
         """
         Method to
