@@ -65,7 +65,9 @@ class App extends Component {
         return (
           <div>
             {/* <Navbar.Text>Signed in as: {user} .</Navbar.Text> */}
-            <Nav.Link href="#/profile"><h4 className="linkText">Signed in as: {user}</h4></Nav.Link>
+            <Nav.Link href="#/profile">
+              <h4 className="linkText">Signed in as: {user}</h4>
+            </Nav.Link>
           </div>
         );
       } else {
@@ -98,7 +100,10 @@ class App extends Component {
               <Route path="/login" element={<LoginPage />} />
               <Route path="/signup" element={<SignupPage />} />
               <Route path="/browse" element={<BrowsePage />} />
-              <Route path="/restaurant/" element={<RestaurantPage />} />
+              <Route
+                path="/restaurant/restaurantName"
+                element={<RestaurantPage />}
+              />
               <Route path="/review/" element={<ReviewPage />} />
               <Route path="/profile/" element={<ProfilePage />} />
             </Routes>

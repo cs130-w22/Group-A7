@@ -4,10 +4,10 @@ import { NavLink } from "react-router-dom";
 import axios from "axios";
 import Cookies from "js-cookie";
 
-import ReviewTile from "../Components/ReviewTile.js";
+// import ReviewTile from "../Components/ReviewTile.js";
 export default class RestaurantPage extends Component {
   state = {
-    restaurantName: "",
+    restaurantName: this.props.restaurantName,
     reviews: [],
     loggedIn: false,
   };
@@ -57,9 +57,9 @@ export default class RestaurantPage extends Component {
   };
 
   render() {
-    const listItems = Object.entries(this.state.reviews).map((r) => (
-      <ReviewTile key={r} review={r} />
-    ));
+    // const listItems = Object.entries(this.state.reviews).map((r) => (
+    //   <ReviewTile key={r} review={r} />
+    // ));
     return (
       <Container>
         <h1>Restaurant Page</h1>
@@ -69,15 +69,15 @@ export default class RestaurantPage extends Component {
             <Form.Control
               type="text"
               placeholder="Enter restaurant"
-              value={this.state.restauarantName}
+              value={this.state.restaurantName}
               onChange={(e) =>
-                this.setState({ restauarantName: e.target.value })
+                this.setState({ restaurantName: e.target.value })
               }
             />
           </Form.Group>
         </Form>
         <Button onClick={this.findReviews}>Find Reviews</Button>
-        {listItems}
+        {/* {listItems} */}
       </Container>
     );
   }
