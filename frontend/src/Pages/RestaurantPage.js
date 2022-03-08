@@ -1,17 +1,38 @@
 import React, { Component } from "react";
 import { Row, Col, Container, Form, Button, FormGroup } from "react-bootstrap";
 import {  NavLink } from "react-router-dom";
-
-export default class ReservePage extends Component {
+import axios from "axios";
+import Cookies from "js-cookie";
+export default class RestaurantPage extends Component {
   state = {
-    restauarantName: "",
-    reservationDetails: "",
+    restaurantName: "",
     loggedIn: false,
   };
+
+  componentDidMount() {
+    axios({
+      method: "post",
+      url: "http://localhost:8000/getCurrentUser/",
+      headers: {
+        "Content-Type": "text/plain",
+        "X-CSRFToken": Cookies.get("XSRF-TOKEN"),
+      },
+      withCredentials: "false",
+    })
+      .then((response) => {
+        if (response.data !== "") {
+          this.setState({ loggedIn: true });
+        }
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  }
+
   render() {
     return (
       <Container>
-        <h1>Reserve Page</h1>
+        <h1>Restaurant Page</h1>
         <Form>
           <Form.Group>
             <Form.Label>Enter the restaurant name</Form.Label>
