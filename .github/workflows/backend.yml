@@ -19,7 +19,7 @@ jobs:
          pip install BeautifulSoup4
          pip install django-cors-headers
          python -m pip install django
-         if [ -f backend/requirements.txt ]; then pip install -r backend/requirements.txt; fi
+         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
          pytest backend/scraper/scraper_tests.py
          python3 backend/manage.py test
          
